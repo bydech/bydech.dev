@@ -1,0 +1,62 @@
+:root {
+  /* =========================================
+     1. PRIMITIVE PALETTES
+     ========================================= */
+
+  /* BRAND COLORS */
+
+  --brand-purple: oklch(65% 0.25 280);
+
+  /* DARK PRIMITIVES*/
+
+  --dark-bg: oklch(0% 0 0);
+  --dark-text-primary: oklch(98% 0 0);
+  --dark-text-secondary: oklch(0.7668 0 0);
+  --dark-border: oklch(0.3371 0.0227 311.18);
+
+  /* LIGHT PRIMITIVES*/
+
+  --light-bg: oklch(100% 0 0);
+  --light-text-primary: oklch(10% 0 0);
+  --light-text-secondary: oklch(0.5916 0.0244 309.38);
+  --light-border: oklch(0.9205 0.0042 301.42);
+
+  /* =========================================
+     2. GLOBAL DEFAULTS (Base = Light Mode)
+     ========================================= */
+
+  --bg-app: var(--light-bg);
+  --text-primary: var(--light-text-primary);
+  --text-secondary: var(--light-text-secondary);
+  --border-line: var(--light-border);
+  --color-primary: var(--brand-purple);
+}
+
+/* =========================================
+   3. SECTION THEMING
+   ========================================= */
+
+/* Force a section to be Light Mode */
+.theme-light {
+  --bg-app: var(--light-bg);
+  --text-primary: var(--light-text-primary);
+  --text-secondary: var(--light-text-secondary);
+  --border-line: var(--light-border);
+
+  /* Slightly darker accent for visibility on white */
+  --color-primary: oklch(55% 0.25 280);
+
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+}
+
+/* Force a section to be Dark Mode */
+.theme-dark {
+  --bg-app: var(--dark-bg);
+  --text-primary: var(--dark-text-primary);
+  --text-secondary: var(--dark-text-secondary);
+  --border-line: var(--dark-border);
+
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+}
