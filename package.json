@@ -1,0 +1,22 @@
+{
+  "name": "bricks-child-starter",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "prettier-watch": "onchange \"resources/scss/**/*.scss\" -- prettier --write \"{{changed}}\""
+  },
+  "devDependencies": {
+    "@prettier/plugin-php": "^0.22.2",
+    "onchange": "^7.1.0",
+    "postcss": "^8.4.38",
+    "postcss-sort-media-queries": "^5.2.0",
+    "prettier": "^3.2.5",
+    "prettier-plugin-css-order": "^2.1.2",
+    "sass": "^1.77.2",
+    "vite": "^5.2.11",
+    "vite-plugin-banner": "^0.7.1"
+  }
+}
