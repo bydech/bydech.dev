@@ -3,9 +3,9 @@
      1. PRIMITIVE PALETTES
      ========================================= */
 
-  /* BRAND COLORS */
-
-  --brand-purple: oklch(65% 0.25 280);
+  /* COLORS */
+  --color-purple: oklch(65% 0.25 280);
+  --color-green: oklch(90% 0.208 141.41);
 
   /* DARK PRIMITIVES*/
 
@@ -29,7 +29,7 @@
   --text-primary: var(--light-text-primary);
   --text-secondary: var(--light-text-secondary);
   --border-line: var(--light-border);
-  --color-primary: var(--brand-purple);
+  --color-primary: var(--color-purple);
 }
 
 /* =========================================
