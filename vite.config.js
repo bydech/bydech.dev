@@ -19,7 +19,6 @@ const localIp = getNetworkIp();
 
 export default defineConfig(({ command }) => {
   const isDev = command === "serve";
-
   return {
     server: isDev && {
       host: "0.0.0.0",
@@ -46,7 +45,7 @@ export default defineConfig(({ command }) => {
           " Template:     bricks\n" +
           " Version:      1.1\n" +
           " Text Domain:  bricks\n" +
-          "*/"
+          "*/",
       ),
     ],
     build: {
@@ -56,12 +55,11 @@ export default defineConfig(({ command }) => {
       rollupOptions: {
         input: {
           main: path.resolve(__dirname, "resources/js/main.js"),
-          style: path.resolve(__dirname, "resources/scss/style.scss"),
+          style: path.resolve(__dirname, "resources/scss/main.scss"),
         },
         output: {
           entryFileNames: "script.js",
-          assetFileNames: (assetInfo) =>
-            assetInfo.name && assetInfo.name.endsWith(".css") ? "style.css" : "[name][extname]",
+          assetFileNames: (assetInfo) => (assetInfo.name && assetInfo.name.endsWith(".css") ? "style.css" : "[name][extname]"),
         },
       },
     },

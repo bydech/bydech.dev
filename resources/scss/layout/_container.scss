@@ -1,0 +1,27 @@
+@use "../abstracts/index" as *;
+
+// ------------------------------------------------------
+// 1. THE CONTAINER
+// ------------------------------------------------------
+// Bricks has a "Section" and "Container" element.
+// We attach this class to the inner Container to enforce consistency.
+
+.container {
+  width: 100%;
+  margin-inline: auto; // Centers the container
+  padding-inline: var(--gutter); // Prevents edge-touching
+
+  // Default: Fluid width up to the max
+  // using your $bp-xl variable (1280px)
+  max-width: $bp-xl;
+
+  // Optional: Make gutter smaller on tiny screens
+  @media (max-width: $bp-sm) {
+    --gutter: var(--space-s);
+  }
+}
+
+// A generic wrapper for narrower reading content (like blog posts)
+.container--narrow {
+  max-width: 45rem; // ~720px
+}

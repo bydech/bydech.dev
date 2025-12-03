@@ -1,0 +1,68 @@
+@use "sass:math";
+@use "vars" as *;
+
+// ----------------------------------------------------------
+// Helpers
+// ----------------------------------------------------------
+
+// Strip units but don't explode on unitless values
+@function strip-unit($value) {
+  @if math.is-unitless($value) {
+    @return $value;
+  }
+
+  @return math.div($value, ($value * 0 + 1));
+}
+
+// Convert any px/rem/unitless value to a unitless "px number"
+@function to-px($value, $base-font-size: 16) {
+  $unit: math.unit($value);
+
+  @if $unit == "rem" {
+    @return strip-unit($value) * $base-font-size;
+  } @else if $unit == "px" or math.is-unitless($value) {
+    @return strip-unit($value);
+  } @else {
+    @error "to-px(#{$value}) only supports px, rem, or unitless values.";
+  }
+}
+
+// Convert a unitless px number to rem
+@function px-to-rem($px, $base-font-size: 16) {
+  @return math.div($px, $base-font-size) * 1rem;
+}
+
+// ----------------------------------------------------------
+// Fluid clamp
+// ----------------------------------------------------------
+// $min-size / $max-size can be px, rem, or unitless (px)
+// $min-width / $max-width can be px, rem, or unitless (px)
+// Output is always in rem + vw
+@function clamp-calc($min-size, $max-size, $min-width: 20rem, $max-width: $bp-xl, $base-font-size: 16) {
+  // Normalize to "px numbers"
+  $min-size-px: to-px($min-size, $base-font-size);
+  $max-size-px: to-px($max-size, $base-font-size);
+  $min-width-px: to-px($min-width, $base-font-size);
+  $max-width-px: to-px($max-width, $base-font-size);
+
+  // Safety checks
+  @if $min-width-px == $max-width-px {
+    @error "clamp-calc(): $min-width and $max-width cannot be equal.";
+  }
+
+  // 1. Slope in px / px -> unitless
+  $slope: math.div(($max-size-px - $min-size-px), ($max-width-px - $min-width-px));
+
+  // 2. Y-intercept in px
+  $intercept-px: $min-size-px - $slope * $min-width-px;
+
+  // 3. Convert px values to rem for output
+  $min-rem: px-to-rem($min-size-px, $base-font-size);
+  $max-rem: px-to-rem($max-size-px, $base-font-size);
+  $intercept-rem: px-to-rem($intercept-px, $base-font-size);
+
+  // 4. VW slope (remember: W = 100vw)
+  $slope-vw: $slope * 100;
+
+  @return clamp($min-rem, #{$intercept-rem} + #{$slope-vw}vw, $max-rem);
+}
