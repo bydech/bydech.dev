@@ -46,3 +46,14 @@ if (defined("WP_DEBUG") && WP_DEBUG) {
         return $content;
     });
 }
+
+// This code adds a custom class to the header. Otherwise we need an extra div (section) inside the header template. With this code we don't
+add_filter("bricks/header/attributes", function ($attributes) {
+    if (isset($attributes["class"]) && is_array($attributes["class"])) {
+        $attributes["class"][] = "header";
+    } else {
+        $attributes["class"] = ["header"];
+    }
+
+    return $attributes;
+});

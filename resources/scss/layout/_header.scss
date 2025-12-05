@@ -1,0 +1,112 @@
+@use "../abstracts/index" as *;
+
+.header.is-open {
+  .header__nav {
+    visibility: visible;
+    width: min(100vw, 320px);
+    transition:
+      width 350ms ease,
+      visibility 0s linear 0s;
+  }
+
+  .header__overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.header {
+  z-index: 1000;
+  position: sticky;
+  top: 0;
+
+  .container {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-inline: 2.5rem;
+    padding-block: 1.5rem;
+    background-color: var(--light-bg);
+  }
+
+  &__overlay {
+    z-index: 998;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: calc(100% - 32px);
+    height: 100dvh;
+    transform: translateX(-50%);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms ease;
+  }
+
+  &__logo {
+    width: 2rem;
+  }
+
+  &__hamburger {
+    width: 2rem;
+    cursor: pointer;
+  }
+
+  &__link-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__icon-wrapper {
+    > svg {
+      width: 2rem;
+      fill: var(--dark-text-primary);
+    }
+  }
+
+  &__contact-wrapper {
+    &-item {
+      color: var(--dark-text-primary);
+    }
+  }
+
+  &__nav {
+    display: flex;
+    visibility: hidden;
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 0;
+    height: 100dvh;
+    padding-top: 24px;
+    padding-right: 0;
+    padding-left: 0;
+    overflow: hidden;
+    overscroll-behavior: contain;
+    background-color: var(--dark-bg);
+
+    transition:
+      width 350ms ease,
+      visibility 0s linear 350ms;
+    -webkit-overflow-scrolling: touch;
+
+    > * {
+      box-sizing: border-box;
+      width: 320px;
+      min-width: 320px;
+      padding-right: 24px;
+      padding-left: 24px;
+      text-align: left;
+    }
+
+    &-item {
+      color: var(--dark-text-primary);
+    }
+  }
+}
