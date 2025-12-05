@@ -1,0 +1,16 @@
+@use "../abstracts/index" as *;
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  &--halves {
+    @include mq-tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  &--thirds {
+    @include mq-tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

@@ -1,6 +1,30 @@
-// Media Query Mixins (Optional helper for layout)
-@mixin mq($width) {
-  @media (min-width: $width) {
+@use "vars" as *;
+
+@mixin mq-phone-xs() {
+  @media (min-width: $bp-xs) {
+    @content;
+  }
+}
+
+@mixin mq-phone() {
+  @media (min-width: $bp-sm) {
+    @content;
+  }
+}
+@mixin mq-phone-xl() {
+  @media (min-width: $bp-md) {
+    @content;
+  }
+}
+
+@mixin mq-tablet() {
+  @media (min-width: $bp-lg) {
+    @content;
+  }
+}
+
+@mixin mq-desktop() {
+  @media (min-width: $bp-xl) {
     @content;
   }
 }

@@ -1,4 +1,5 @@
 {
-  "plugins": ["@prettier/plugin-php"],
-  "printWidth": 180
+  "plugins": ["@prettier/plugin-php", "prettier-plugin-css-order"],
+  "printWidth": 180,
+  "cssDeclarationSorterOrder": "smacss"
 }

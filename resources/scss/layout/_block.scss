@@ -1,0 +1,34 @@
+@use "../abstracts/index" as *;
+
+.block {
+  display: flex;
+  padding-inline: 1.5rem;
+  padding-block: 1.5rem;
+
+  @include mq-tablet {
+    padding-inline: 2.5rem;
+    padding-block: 2.5rem;
+  }
+
+  &--border {
+    border-bottom: 1px solid var(--border-line);
+    @include mq-tablet {
+      border-right: 1px solid var(--border-line);
+      border-bottom: none;
+    }
+  }
+
+  &--split {
+    justify-content: space-between; // Pushes top and bottom apart
+    height: 100%;
+    gap: 64px;
+  }
+
+  &--intro {
+    padding-block: 3rem;
+
+    @include mq-tablet {
+      padding-block: 6.25rem;
+    }
+  }
+}

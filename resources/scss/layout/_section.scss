@@ -6,18 +6,8 @@
 // Use this on <section> or Bricks Section element
 
 .section {
-  padding-block: var(--space-xl); // Default top/bottom padding
-
-  // More padding on larger screens for that "premium" feel
-  @include mq($bp-lg) {
-    padding-block: var(--space-2xl);
-  }
 }
-
 .section--small {
-  padding-block: var(--space-l);
 }
-
 .section--large {
-  padding-block: var(--space-3xl);
 }

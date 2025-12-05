@@ -38,7 +38,7 @@
 // $min-size / $max-size can be px, rem, or unitless (px)
 // $min-width / $max-width can be px, rem, or unitless (px)
 // Output is always in rem + vw
-@function clamp-calc($min-size, $max-size, $min-width: 20rem, $max-width: $bp-xl, $base-font-size: 16) {
+@function clamp-calc($min-size, $max-size, $min-width: $bp-xs, $max-width: $bp-xl, $base-font-size: 16) {
   // Normalize to "px numbers"
   $min-size-px: to-px($min-size, $base-font-size);
   $max-size-px: to-px($max-size, $base-font-size);

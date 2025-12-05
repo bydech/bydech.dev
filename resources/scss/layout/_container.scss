@@ -7,21 +7,15 @@
 // We attach this class to the inner Container to enforce consistency.
 
 .container {
-  width: 100%;
-  margin-inline: auto; // Centers the container
-  padding-inline: var(--gutter); // Prevents edge-touching
+  width: calc(100% - 32px);
+  max-width: calc($bp-xl + 32px);
 
-  // Default: Fluid width up to the max
-  // using your $bp-xl variable (1280px)
-  max-width: $bp-xl;
-
-  // Optional: Make gutter smaller on tiny screens
-  @media (max-width: $bp-sm) {
-    --gutter: var(--space-s);
+  &--border {
+    border-right: 1px solid var(--border-line);
+    border-bottom: 1px solid var(--border-line);
+    border-left: 1px solid var(--border-line);
   }
-}
-
-// A generic wrapper for narrower reading content (like blog posts)
-.container--narrow {
-  max-width: 45rem; // ~720px
+  &--narrow {
+    max-width: 53.125rem; // ~850px
+  }
 }
