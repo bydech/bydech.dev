@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector(".header");
   const hamburger = header.querySelector(".header__hamburger");
-  const nav = header.querySelector(".header__nav");
+  const close = header.querySelector(".nav__close");
+  const nav = header.querySelector(".nav");
   const overlay = header.querySelector(".header__overlay");
-  const navItems = nav.querySelectorAll(".header__nav-item");
+  const navItems = nav.querySelectorAll(".nav__link");
 
   let savedScrollY = 0;
 
@@ -55,6 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Event Listeners
   hamburger.addEventListener("click", () => toggleMenu());
   overlay.addEventListener("click", () => toggleMenu(false));
+  close.addEventListener("click", () => toggleMenu());
   navItems.forEach((item) => item.addEventListener("click", () => toggleMenu(false)));
 
   document.addEventListener("keydown", (e) => {

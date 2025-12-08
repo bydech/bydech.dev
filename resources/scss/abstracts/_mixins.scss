@@ -1,5 +1,28 @@
 @use "vars" as *;
 
+@mixin type-sans($size, $line, $weight: 400, $tracking: 0) {
+  font-weight: $weight;
+  font-size: $size; // can be rem or clamp(...)
+  line-height: $line; // unitless
+  font-family: $font-sans;
+  letter-spacing: $tracking;
+}
+
+@mixin type-mono($size, $line, $weight: 500, $tracking: 0) {
+  font-weight: $weight;
+  font-size: $size; // can be rem or clamp(...)
+  line-height: $line; // unitless
+  font-family: $font-mono;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: $tracking;
+}
+
+@mixin mq-phone-xxs() {
+  @media (min-width: $bp-xxs) {
+    @content;
+  }
+}
+
 @mixin mq-phone-xs() {
   @media (min-width: $bp-xs) {
     @content;

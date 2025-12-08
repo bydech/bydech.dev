@@ -1,0 +1,103 @@
+@use "../abstracts/index" as *;
+
+.nav {
+  visibility: hidden;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  align-items: flex-end;
+  width: 0;
+  height: 100dvh;
+  overflow: hidden;
+  overscroll-behavior: contain;
+  background-color: var(--bg-theme);
+  transition:
+    width 350ms ease,
+    visibility 0s linear 350ms;
+  -webkit-overflow-scrolling: touch;
+
+  @include mq-tablet {
+    position: absolute;
+  }
+
+  &__container {
+    box-sizing: border-box; /* Important so padding doesn't add to width */
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    min-width: fit-content;
+    max-width: 100vw;
+    height: 100%;
+    padding-inline: 1rem;
+    > * {
+      width: 100%;
+      padding-inline: 16px;
+      padding-block: 24px;
+      border-right: 1px solid var(--border-line);
+      border-left: 1px solid var(--border-line);
+    }
+  }
+
+  &__header {
+    flex-shrink: 0;
+    align-items: flex-end;
+  }
+
+  &__body {
+    flex-grow: 1;
+    align-items: flex-end;
+    min-height: 0;
+    overflow-y: auto;
+    border: 1px solid var(--border-line);
+  }
+
+  &__footer {
+    flex-shrink: 0;
+    .eyebrow {
+      --eyebrow-color: #86ff76;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    min-width: 100%;
+    gap: 1.2rem;
+  }
+
+  &__close {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__link {
+    &-text {
+      font-weight: 00;
+      font-size: px-to-rem(28);
+      font-family: $font-sans;
+    }
+    &-number {
+      color: color-mix(in srgb, transparent, var(--text-secondary) 40%);
+      font-size: px-to-rem(18);
+    }
+
+    /* 2. Hover State (Optional but nice) */
+    &:hover {
+      .nav__link-number {
+        color: var(--text-primary);
+      }
+    }
+
+    /* 3. ACTIVE STATE */
+    /* Checks for class .is-active OR standard attribute aria-current="page" */
+
+    &[aria-current="page"] {
+      .nav__link-number {
+        color: var(--text-primary);
+      }
+    }
+  }
+}

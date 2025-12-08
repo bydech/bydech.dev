@@ -1,0 +1,29 @@
+@use "../abstracts/index" as *;
+
+@mixin eyebrow-base {
+  @include type-mono(px-to-rem(14), 1, 400);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  border-radius: 0.25rem;
+}
+
+// 3) Default eyebrow component
+.eyebrow {
+  @include eyebrow-base;
+  --eyebrow-color: var(--color-primary);
+  border: 1px solid color-mix(in srgb, transparent, var(--eyebrow-color) 50%);
+  background-color: color-mix(in srgb, transparent, var(--eyebrow-color) 30%);
+  color: var(--eyebrow-color);
+}
+
+// Variants just update the variable! No mixins needed.
+.eyebrow--primary {
+  --eyebrow-color: var(--color-primary);
+}
+
+.eyebrow--transparent {
+  --eyebrow-color: transparent;
+  color: var(--text-primary);
+}

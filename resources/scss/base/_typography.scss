@@ -7,41 +7,7 @@
 @use "../abstracts/index" as *;
 
 // ------------------------------------------------------
-// 1. Font Families
-// ------------------------------------------------------
-$font-sans:
-  ibmplex,
-  system-ui,
-  -apple-system,
-  sans-serif;
-$font-mono:
-  jetbrains,
-  Roboto Mono,
-  monospace;
-
-// ------------------------------------------------------
-// 2. Mixins
-// ------------------------------------------------------
-
-@mixin type-sans($size, $line, $weight: 400, $tracking: 0) {
-  font-weight: $weight;
-  font-size: $size; // can be rem or clamp(...)
-  line-height: $line; // unitless
-  font-family: $font-sans;
-  letter-spacing: $tracking;
-}
-
-@mixin type-mono($size, $line, $weight: 500, $tracking: 0) {
-  font-weight: $weight;
-  font-size: $size; // can be rem or clamp(...)
-  line-height: $line; // unitless
-  font-family: $font-mono;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: $tracking;
-}
-
-// ------------------------------------------------------
-// 3. Abstract Styles (Placeholders)
+// 2. Abstract Styles (Placeholders)
 // ------------------------------------------------------
 // We use %placeholders so we can extend them without bloating CSS
 
@@ -85,13 +51,8 @@ $font-mono:
   @include type-sans(clamp-calc(15, 16), 1.35, 400, 0.005em);
 }
 
-// Mono eyebrow / label, static 14px
-%eyebrow {
-  @include type-mono(px-to-rem(14), 1, 400);
-}
-
 // // ------------------------------------------------------
-// // 4. Classes (For use in HTML)
+// // 3. Classes (For use in HTML)
 // // ------------------------------------------------------
 
 .heading-display {
@@ -129,12 +90,8 @@ $font-mono:
   }
 }
 
-.eyebrow {
-  @extend %eyebrow;
-}
-
 // // ------------------------------------------------------
-// // 5. Global Resets (Attaching to Tags)
+// // 4. Global Resets (Attaching to Tags)
 // // ------------------------------------------------------
 
 h1,
@@ -188,7 +145,7 @@ small {
 }
 
 // // ------------------------------------------------------
-// // 6. Spacing Utilities
+// // 5. Spacing Utilities
 // // ------------------------------------------------------
 
 .flow > * + * {

@@ -2,12 +2,17 @@
 
 .block {
   display: flex;
-  padding-inline: 1.5rem;
-  padding-block: 1.5rem;
+  padding-inline: 10px;
+  padding-block: 10px;
+
+  @include mq-phone-xxs {
+    padding-inline: 24px;
+    padding-block: 24px;
+  }
 
   @include mq-tablet {
-    padding-inline: 2.5rem;
-    padding-block: 2.5rem;
+    padding-inline: 40px;
+    padding-block: 40px;
   }
 
   &--border {
