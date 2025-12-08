@@ -25,9 +25,14 @@
     position: relative;
     flex-direction: row;
     justify-content: space-between;
-    padding-inline: 1.5rem;
-    padding-block: 1.5rem;
+    padding-inline: 0.5rem;
+    padding-block: 0.5rem;
     background-color: var(--light-bg);
+
+    @include mq-phone-xxs {
+      padding-inline: 1.5rem;
+      padding-block: 1.5rem;
+    }
 
     @include mq-tablet {
       padding-inline: 2.5rem;

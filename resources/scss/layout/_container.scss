@@ -7,7 +7,11 @@
 // We attach this class to the inner Container to enforce consistency.
 
 .container {
-  width: calc(100% - 32px);
+  width: calc(100% - 16px);
+
+  @include mq-phone-xxs {
+    width: calc(100% - 32px);
+  }
   max-width: $bp-xl;
 
   &--border {
