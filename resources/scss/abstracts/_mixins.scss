@@ -17,35 +17,41 @@
   letter-spacing: $tracking;
 }
 
-@mixin mq-phone-xxs() {
+// $bp-xxs: 20rem; //320px
+@mixin mq-phone-xs() {
   @media (min-width: $bp-xxs) {
     @content;
   }
 }
 
-@mixin mq-phone-xs() {
+// $bp-xs: 25rem; //400px
+@mixin mq-phone() {
   @media (min-width: $bp-xs) {
     @content;
   }
 }
 
-@mixin mq-phone() {
+//$bp-sm: 29.875rem; //478px
+@mixin mq-phone-lg() {
   @media (min-width: $bp-sm) {
     @content;
   }
 }
-@mixin mq-phone-xl() {
+
+// $bp-md: 47.9375rem; //767px
+@mixin mq-tablet() {
   @media (min-width: $bp-md) {
     @content;
   }
 }
 
-@mixin mq-tablet() {
+// $bp-lg: 64rem; // 1023px
+@mixin mq-laptop() {
   @media (min-width: $bp-lg) {
     @content;
   }
 }
-
+// $bp-xl: 80rem  1280px
 @mixin mq-desktop() {
   @media (min-width: $bp-xl) {
     @content;

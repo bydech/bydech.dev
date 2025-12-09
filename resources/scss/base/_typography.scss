@@ -11,24 +11,23 @@
 // ------------------------------------------------------
 // We use %placeholders so we can extend them without bloating CSS
 
-// // Display: scales from 40px → 64px between 20rem and $bp-xl
 %heading-display {
-  @include type-mono(clamp-calc(48, 64), 1.4, 600, -0.02em);
+  @include type-mono(clamp(1.8rem, 13cqi, 4rem), 1.45, 600, -0.02em);
 }
 
 // H1: 32px → 48px
 %heading-h1 {
-  @include type-mono(clamp-calc(40, 48), 1.1, 600, -0.02em);
+  @include type-mono(clamp(1.6rem, 1.133rem + 2.333vw, 3rem), 1.3, 600, -0.02em);
 }
 
 // H2: 28px → 36px
 %heading-h2 {
-  @include type-mono(clamp-calc(30, 38), 1.2, 600, -0.02em);
+  @include type-mono(clamp(1.6rem, 1.342rem + 1.292vw, 2.375rem), 1.3, 600, -0.02em);
 }
 
 // H3: 24px → 28px
 %heading-h3 {
-  @include type-mono(clamp-calc(22, 24), 1.3, 500, -0.02em);
+  @include type-mono(clamp(1.3rem, 1.233rem + 0.333vw, 1.5rem), 1.3, 500, -0.02em);
 }
 
 // H4: static 20px
@@ -38,17 +37,21 @@
 
 // Body text
 // Note: 18 → 16 means slightly larger on small screens, smaller on large.
+%body-display {
+  @include type-sans(clamp(1.125rem, 1.1042rem + 0.1042vw, 1.1875rem), 1.5, 400, 0.005em);
+}
+
 %body-large {
-  @include type-sans(clamp-calc(17, 18), 1.35, 400, 0.005em);
+  @include type-sans(clamp(1.063rem, 1.042rem + 0.104vw, 1.125rem), 1.5, 400, 0.005em);
 }
 
 %body-default {
-  @include type-sans(clamp-calc(16, 17), 1.35, 400, 0.005em);
+  @include type-sans(clamp(1rem, 0.979rem + 0.104vw, 1.063rem), 1.5, 400, 0.005em);
 }
 
 // Small body: 16 → 14
 %body-small {
-  @include type-sans(clamp-calc(15, 16), 1.35, 400, 0.005em);
+  @include type-sans(clamp(0.938rem, 0.917rem + 0.104vw, 1rem), 1.5, 400, 0.005em);
 }
 
 // // ------------------------------------------------------
@@ -57,7 +60,9 @@
 
 .heading-display {
   @extend %heading-display;
+  hyphens: auto;
 }
+
 .heading-h1 {
   @extend %heading-h1;
 }
@@ -71,6 +76,13 @@
   @extend %heading-h4;
 }
 
+.body-display {
+  &,
+  & > p {
+    @extend %body-display;
+    color: #3d3d3d;
+  }
+}
 .body-large {
   &,
   & > p {
@@ -137,6 +149,7 @@ p {
   @extend %body-default;
   max-width: 60ch;
   color: var(--text-secondary);
+  text-wrap: pretty;
 }
 
 small {
@@ -171,4 +184,8 @@ small {
 }
 .mb-8 {
   margin-bottom: 4rem;
+}
+
+.m-0 {
+  margin: 0;
 }

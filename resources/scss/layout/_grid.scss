@@ -3,14 +3,35 @@
   display: grid;
   grid-template-columns: 1fr;
   align-items: stretch;
+  &--sidebar {
+    @include mq-laptop {
+      grid-template-columns: 5fr 2fr;
+    }
+  }
   &--halves {
-    @include mq-tablet {
+    @include mq-laptop {
       grid-template-columns: repeat(2, 1fr);
     }
   }
   &--thirds {
     @include mq-tablet {
+      // Create 2 columns
+      grid-template-columns: 1fr 1fr;
+
+      // Target the 3rd item specifically to make it full width
+      > *:nth-child(3) {
+        grid-column: 1 / -1; // Spans from the first line to the last line
+      }
+    }
+
+    // --- LAPTOP LAYOUT (Reset to 3 columns) ---
+    @include mq-laptop {
       grid-template-columns: repeat(3, 1fr);
+
+      // CRITICAL: You must reset the span, otherwise it stays full width!
+      > *:nth-child(3) {
+        grid-column: auto;
+      }
     }
   }
 }

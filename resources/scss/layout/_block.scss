@@ -1,24 +1,28 @@
 @use "../abstracts/index" as *;
 
 .block {
+  container-name: layout-block;
+  container-type: inline-size;
   display: flex;
-  padding-inline: 10px;
-  padding-block: 10px;
+  padding-inline: 8px;
+  padding-block: 1.5rem;
 
-  @include mq-phone-xxs {
-    padding-inline: 24px;
-    padding-block: 24px;
+  @include mq-phone-xs {
+    padding-inline: clamp(1.25rem, 1.108rem + 0.71vw, 1.563rem);
+    padding-block: clamp(1.25rem, 1.108rem + 0.71vw, 1.563rem);
   }
 
-  @include mq-tablet {
-    padding-inline: 40px;
-    padding-block: 40px;
+  @include mq-laptop {
+    padding-inline: clamp(1.563rem, -2.188rem + 5.859vw, 2.5rem);
+    padding-block: clamp(1.563rem, -2.188rem + 5.859vw, 2.5rem);
   }
 
   &--border {
     border-bottom: 1px solid var(--border-line);
     @include mq-tablet {
       border-right: 1px solid var(--border-line);
+    }
+    @include mq-laptop {
       border-bottom: none;
     }
   }
@@ -30,10 +34,14 @@
   }
 
   &--intro {
-    padding-block: 3rem;
+    padding-block: 2rem;
 
-    @include mq-tablet {
-      padding-block: 6.25rem;
+    @include mq-phone-xs {
+      padding-block: clamp(2.5rem, 0.907rem + 7.966vw, 6rem);
+    }
+
+    @include mq-laptop {
+      padding-block: clamp(6rem, 5.005rem + 1.556vw, 6.25rem);
     }
   }
 }

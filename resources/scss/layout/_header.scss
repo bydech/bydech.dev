@@ -17,7 +17,7 @@
 
 .header {
   z-index: 1000;
-  position: sticky;
+  position: relative;
   top: 0;
 
   .container {
@@ -25,17 +25,18 @@
     position: relative;
     flex-direction: row;
     justify-content: space-between;
-    padding-inline: 0.5rem;
-    padding-block: 0.5rem;
+    padding-inline: 0.75rem;
+    padding-block: 0.75rem;
+
     background-color: var(--light-bg);
 
-    @include mq-phone-xxs {
-      padding-inline: 1.5rem;
-      padding-block: 1.5rem;
+    @include mq-phone-xs {
+      padding-inline: clamp(1.25rem, 1.108rem + 0.71vw, 1.563rem);
+      padding-block: clamp(1.25rem, 1.108rem + 0.71vw, 1.563rem);
     }
 
-    @include mq-tablet {
-      padding-inline: 2.5rem;
+    @include mq-laptop {
+      padding-inline: clamp(1.563rem, -2.188rem + 5.859vw, 2.5rem);
     }
   }
 
@@ -54,24 +55,9 @@
   }
 
   &__logo {
-    width: 2rem;
   }
 
   &__hamburger {
-    width: 2rem;
     cursor: pointer;
-  }
-
-  &__icon-wrapper {
-    > svg {
-      width: 2rem;
-      fill: var(--dark-text-primary);
-    }
-  }
-
-  &__contact-wrapper {
-    &-item {
-      color: var(--dark-text-primary);
-    }
   }
 }
