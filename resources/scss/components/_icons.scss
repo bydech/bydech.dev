@@ -45,3 +45,62 @@
     fill: var(--dark-text-primary);
   }
 }
+
+@keyframes icon-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.85);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes icon-shake {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes icon-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.icon-animate-pulse {
+  transform-origin: center;
+  animation: icon-pulse 2s infinite ease-in-out;
+}
+
+.icon-animate-shake {
+  // You might want this on hover only?
+  // animation-iteration-count: infinite;
+  transform-origin: center;
+  animation: icon-shake 0.5s ease-in-out;
+}
+
+.icon-animate-spin {
+  transform-origin: center;
+  animation: icon-spin 1s linear infinite;
+}
+
+// Default / None state (Useful for the Bricks Select dropdown)
+.icon-animate-none {
+  animation: none;
+}

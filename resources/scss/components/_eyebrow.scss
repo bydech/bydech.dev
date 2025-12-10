@@ -1,29 +1,103 @@
 @use "../abstracts/index" as *;
 
-@mixin eyebrow-base {
-  @include type-mono(px-to-rem(14), 1, 400);
+.eyebrow {
+  --eyebrow-bg-opacity: 20%;
+  --eyebrow-border-opacity: 40%;
+  --eyebrow-color: var(--color-primary);
+  --eyebrow-py: 0.5rem;
+  --eyebrow-px: 0.625rem;
+  --eyebrow-font-size: 1rem;
+  --eyebrow-icon-size: 1.5rem;
+
+  // 2. Base Styles
+  @include type-mono(0.875rem, 1, 400);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 1rem;
+  padding: var(--eyebrow-py) var(--eyebrow-px);
+  gap: 0.5em;
+  border: 1px solid color-mix(in srgb, var(--eyebrow-color), transparent calc(100% - var(--eyebrow-border-opacity)));
   border-radius: 0.25rem;
-}
+  background-color: color-mix(in srgb, var(--eyebrow-color), transparent calc(100% - var(--eyebrow-bg-opacity)));
 
-// 3) Default eyebrow component
-.eyebrow {
-  @include eyebrow-base;
-  --eyebrow-color: var(--color-primary);
-  border: 1px solid color-mix(in srgb, transparent, var(--eyebrow-color) 50%);
-  background-color: color-mix(in srgb, transparent, var(--eyebrow-color) 30%);
   color: var(--eyebrow-color);
-}
 
-// Variants just update the variable! No mixins needed.
-.eyebrow--primary {
-  --eyebrow-color: var(--color-primary);
-}
+  &__icon {
+    flex-shrink: 0; // Prevent icon squishing
+    width: var(--eyebrow-icon-size);
+    fill: currentColor;
+  }
 
-.eyebrow--transparent {
-  --eyebrow-color: transparent;
-  color: var(--text-primary);
+  &__text {
+    font-size: var(--eyebrow-font-size);
+  }
+
+  &--primary {
+    --eyebrow-color: var(--color-primary);
+  }
+
+  &--dark {
+    --eyebrow-color: var(--dark-bg);
+  }
+
+  &--ghost {
+    --eyebrow-bg-opacity: 0%;
+    --eyebrow-border-opacity: 0%;
+    padding-inline: 0; // Remove padding for text-only look
+    color: var(--text-primary);
+  }
+
+  &--outline {
+    --eyebrow-bg-opacity: 0%;
+    --eyebrow-border-opacity: 100%; // Solid border
+    color: var(--text-primary); // Text is black/white
+    --eyebrow-color: var(--border-line); // Border is grey
+  }
+
+  // ------------------------------------------------------
+  // VARIANTS: SIZES
+  // ------------------------------------------------------
+
+  &--small {
+    --eyebrow-font-size: 0.875rem;
+    --eyebrow-py: 0.425rem;
+    --eyebrow-px: 0.5rem;
+    --eyebrow-icon-size: 1.25rem;
+  }
+
+  &--large {
+    --eyebrow-font-size: 1.125rem;
+    --eyebrow-py: 0.625rem;
+    --eyebrow-px: 0.75rem;
+  }
+
+  // ------------------------------------------------------
+  // VARIANTS: ANIMATIONS
+  // ------------------------------------------------------
+
+  // 1. Define the Animation (At the top of the file)
+  @keyframes pulse-scale {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(0.85);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  &--pulse {
+    &__icon {
+      flex-shrink: 0;
+      width: var(--eyebrow-icon-size);
+      transform-origin: center;
+      fill: currentColor;
+      animation: pulse-scale 2s infinite ease-in-out;
+    }
+  }
 }
