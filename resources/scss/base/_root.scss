@@ -26,9 +26,13 @@
      ========================================= */
 
   --bg-theme: var(--light-bg);
+  --bg-theme-inverse: var(--dark-bg);
   --text-primary: var(--light-text-primary);
+  --text-primary-inverse: var(--dark-text-primary);
   --text-secondary: var(--light-text-secondary);
+  --text-secondary-inverse: var(--dark-text-secondary);
   --border-line: var(--light-border);
+  --border-line-inverse: var(--dark-border);
   --color-primary: var(--color-purple);
 
   // ------------------------------------------------------
@@ -44,6 +48,12 @@
   --space-xl: 3rem; // 48px
   --space-2xl: 5rem; // 80px
   --space-3xl: 8rem; // 128px
+
+  // font sizes
+  --fs-body-display: clamp(1.125rem, 1.1042rem + 0.1042vw, 1.1875rem);
+  --fs-body-large: clamp(1.063rem, 1.042rem + 0.104vw, 1.125rem);
+  --fs-body-default: clamp(1rem, 0.979rem + 0.104vw, 1.063rem);
+  --fs-body-small: clamp(0.938rem, 0.917rem + 0.104vw, 1rem);
 }
 
 /* =========================================
