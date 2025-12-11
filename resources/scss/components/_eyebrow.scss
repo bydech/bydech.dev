@@ -4,22 +4,21 @@
   --eyebrow-bg-opacity: 20%;
   --eyebrow-border-opacity: 40%;
   --eyebrow-color: var(--color-primary);
-  --eyebrow-py: 0.5rem;
-  --eyebrow-px: 0.625rem;
+  --eyebrow-py: 0.6em;
+  --eyebrow-px: 0.8em;
   --eyebrow-font-size: 1rem;
-  --eyebrow-icon-size: 1.5rem;
+  --eyebrow-icon-size: var(--icon-size-sm);
 
-  // 2. Base Styles
   @include type-mono(0.875rem, 1, 400);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: var(--eyebrow-py) var(--eyebrow-px);
+  padding-inline: var(--eyebrow-px);
+  padding-block: var(--eyebrow-py);
   gap: 0.5em;
   border: 1px solid color-mix(in srgb, var(--eyebrow-color), transparent calc(100% - var(--eyebrow-border-opacity)));
   border-radius: 0.25rem;
   background-color: color-mix(in srgb, var(--eyebrow-color), transparent calc(100% - var(--eyebrow-bg-opacity)));
-
   color: var(--eyebrow-color);
 
   &__icon {
@@ -43,15 +42,14 @@
   &--ghost {
     --eyebrow-bg-opacity: 0%;
     --eyebrow-border-opacity: 0%;
-    padding-inline: 0; // Remove padding for text-only look
-    color: var(--text-primary);
+    --eyebrow-px: 0; // Remove padding for text-only look
+    --eyebrow-color: var(--text-primary);
   }
 
   &--outline {
     --eyebrow-bg-opacity: 0%;
     --eyebrow-border-opacity: 100%; // Solid border
-    color: var(--text-primary); // Text is black/white
-    --eyebrow-color: var(--border-line); // Border is grey
+    --eyebrow-color: var(--text-primary); // Text is black/white
   }
 
   // ------------------------------------------------------
@@ -60,15 +58,12 @@
 
   &--small {
     --eyebrow-font-size: 0.875rem;
-    --eyebrow-py: 0.425rem;
-    --eyebrow-px: 0.5rem;
-    --eyebrow-icon-size: 1.25rem;
+    --eyebrow-icon-size: var(--icon-size-sm);
   }
 
   &--large {
     --eyebrow-font-size: 1.125rem;
-    --eyebrow-py: 0.625rem;
-    --eyebrow-px: 0.75rem;
+    --eyebrow-icon-size: var(--icon-size-lg);
   }
 
   // ------------------------------------------------------

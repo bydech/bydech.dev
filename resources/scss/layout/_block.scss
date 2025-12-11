@@ -8,13 +8,13 @@
   padding-block: 1.5rem;
 
   @include mq-phone-xs {
-    padding-inline: clamp(1.25rem, 1.108rem + 0.71vw, 1.563rem);
-    padding-block: clamp(1.25rem, 1.108rem + 0.71vw, 1.563rem);
+    padding-inline: #{clamp-calc(1.25rem, 1.563rem, $bp-xxs, $bp-sm)};
+    padding-block: #{clamp-calc(1.25rem, 1.563rem, $bp-xxs, $bp-sm)};
   }
 
   @include mq-laptop {
-    padding-inline: clamp(1.563rem, -2.188rem + 5.859vw, 2.5rem);
-    padding-block: clamp(1.563rem, -2.188rem + 5.859vw, 2.5rem);
+    padding-inline: #{clamp-calc(1.563rem, 2.5rem, $bp-lg, $bp-xl)};
+    padding-block: #{clamp-calc(1.563rem, 2.5rem, $bp-lg, $bp-xl)};
   }
 
   &--border {
@@ -37,11 +37,11 @@
     padding-block: 2rem;
 
     @include mq-phone-xs {
-      padding-block: clamp(2.5rem, 0.907rem + 7.966vw, 6rem);
+      padding-block: #{clamp-calc(2.5rem, 6rem, $bp-xxs, $bp-sm)};
     }
 
     @include mq-laptop {
-      padding-block: clamp(6rem, 5.005rem + 1.556vw, 6.25rem);
+      padding-block: #{clamp-calc(6rem, 6.25rem, $bp-lg, $bp-xl)};
     }
   }
 }

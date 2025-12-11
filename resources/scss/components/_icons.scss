@@ -8,29 +8,29 @@
   transition:
     fill 0.2s ease,
     transform 0.2s ease;
-
+  &--xs {
+    width: var(--icon-size-xs);
+    height: var(--icon-size-xs);
+  }
   &--sm {
-    width: 1rem;
-    height: 1rem;
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
   }
-
   &--md {
-    width: 2rem;
-    height: 2rem;
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
   }
-
   &--lg {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: var(--icon-size-lg);
+    height: var(--icon-size-lg);
   }
-
   &--xl {
-    width: 3rem;
-    height: 3rem;
+    width: var(--icon-size-xl);
+    height: var(--icon-size-xl);
   }
   &--xxl {
-    width: 5rem;
-    height: 5rem;
+    width: var(--icon-size-xxl);
+    height: var(--icon-size-xxl);
   }
 
   &--primary {

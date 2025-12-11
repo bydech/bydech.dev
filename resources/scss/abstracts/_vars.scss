@@ -14,6 +14,13 @@ $fs-body-default: #{clamp-calc(1rem, 1.063rem)};
 // 15px -> 16px
 $fs-body-small: #{clamp-calc(0.938rem, 1rem)};
 
+$icon-size-xs: 0.75rem;
+$icon-size-sm: 1rem;
+$icon-size-md: 1.5rem;
+$icon-size-lg: 2rem;
+$icon-size-xl: 2.5rem;
+$icon-size-xxl: 3rem;
+
 $font-sans:
   ibmplex,
   system-ui,

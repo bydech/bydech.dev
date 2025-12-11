@@ -17,22 +17,22 @@
 
 // H1: 32px → 48px
 %heading-h1 {
-  @include type-mono(clamp(1.6rem, 1.133rem + 2.333vw, 3rem), 1.3, 600, -0.02em);
+  @include type-mono(clamp-calc(1.6rem, 3rem), 1.3, 600, -0.02em);
 }
 
 // H2: 28px → 36px
 %heading-h2 {
-  @include type-mono(clamp(1.6rem, 1.342rem + 1.292vw, 2.375rem), 1.3, 600, -0.02em);
+  @include type-mono(clamp-calc(1.6rem, 2.375rem), 1.3, 600, -0.02em);
 }
 
 // H3: 24px → 28px
 %heading-h3 {
-  @include type-mono(clamp(1.3rem, 1.233rem + 0.333vw, 1.5rem), 1.3, 500, -0.02em);
+  @include type-mono(clamp-calc(1.3rem, 1.5rem), 1.3, 500, -0.02em);
 }
 
 // H4: static 20px
 %heading-h4 {
-  @include type-mono(px-to-rem(20), 1.4, 500, 0);
+  @include type-mono(1.25rem, 1.4, 500, 0);
 }
 
 // Body text

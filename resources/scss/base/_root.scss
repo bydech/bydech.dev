@@ -38,30 +38,30 @@
   --color-primary: var(--color-purple);
 
   // ------------------------------------------------------
-  // Spacing System (Primitive Scale)
+  // font sizes
   // ------------------------------------------------------
-
-  // We use CSS variables for spacing so they can be changed
-  // inside builder instances if absolutely necessary.
-  --space-xs: 0.5rem; // 8px
-  --space-s: 1rem; // 16px
-  --space-m: 1.5rem; // 24px
-  --space-l: 2rem; // 32px`
-  --space-xl: 3rem; // 48px
-  --space-2xl: 5rem; // 80px
-  --space-3xl: 8rem; // 128px
 
   // 18px -> 19px
   --fs-body-display: #{clamp-calc(1.125rem, 1.1875rem)};
-
   // 17px -> 18px
   --fs-body-large: #{clamp-calc(1.063rem, 1.125rem)};
-
   // 16px -> 17px
   --fs-body-default: #{clamp-calc(1rem, 1.063rem)};
-
   // 15px -> 16px
   --fs-body-small: #{clamp-calc(0.938rem, 1rem)};
+
+  --fs-heading-display: clamp(1.8rem, 13cqi, 4rem);
+  --fs-heading-h1: #{clamp-calc(1.6rem, 3rem)};
+  --fs-heading-h2: #{clamp-calc(1.6rem, 2.375rem)};
+  --fs-heading-h3: #{clamp-calc(1.3rem, 1.5rem)};
+  --fs-heading-h4: 1.25rem;
+
+  --icon-size-xs: 0.75rem;
+  --icon-size-sm: 1rem;
+  --icon-size-md: 1.5rem;
+  --icon-size-lg: 2rem;
+  --icon-size-xl: 2.5rem;
+  --icon-size-xxl: 3rem;
 }
 
 /* =========================================

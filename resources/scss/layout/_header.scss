@@ -31,12 +31,12 @@
     background-color: var(--light-bg);
 
     @include mq-phone-xs {
-      padding-inline: clamp(1.25rem, 1.108rem + 0.71vw, 1.563rem);
-      padding-block: clamp(1.25rem, 1.108rem + 0.71vw, 1.563rem);
+      padding-inline: #{clamp-calc(1.25rem, 1.563rem, $bp-xxs, $bp-sm)};
+      padding-block: #{clamp-calc(1.25rem, 1.563rem, $bp-xxs, $bp-sm)};
     }
 
     @include mq-laptop {
-      padding-inline: clamp(1.563rem, -2.188rem + 5.859vw, 2.5rem);
+      padding-inline: #{clamp-calc(1.563rem, 2.5rem, $bp-lg, $bp-xl)};
     }
   }
 
