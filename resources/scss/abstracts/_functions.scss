@@ -1,2 +1,74 @@
 @use "sass:math";
-@use "vars" as *;
+@use "vars" as *; // Imports variables like $bp-xl
+
+// ----------------------------------------------------------
+// 1. HELPERS (Internal use for clamp-calc)
+// ----------------------------------------------------------
+
+// Strip units (rem/px -> raw number)
+// Example: 16px -> 16
+@function strip-unit($value) {
+  @if math.is-unitless($value) {
+    @return $value;
+  }
+  @return math.div($value, ($value * 0 + 1));
+}
+
+// Convert any value to a raw "Pixel Number"
+// Handles: 16px -> 16, 1rem -> 16, 20 -> 20
+@function to-px($value, $base-font-size: 16) {
+  $unit: math.unit($value);
+
+  @if $unit == "rem" {
+    @return strip-unit($value) * $base-font-size;
+  } @else if $unit == "px" or math.is-unitless($value) {
+    @return strip-unit($value);
+  } @else {
+    @error "to-px(#{$value}) only supports px, rem, or unitless values.";
+  }
+}
+
+// Convert raw pixel number back to rem string
+// Example: 16 -> 1rem
+@function px-to-rem($px, $base-font-size: 16) {
+  @return math.div($px, $base-font-size) * 1rem;
+}
+
+// ----------------------------------------------------------
+// 2. THE CLAMP CALC FUNCTION
+// ----------------------------------------------------------
+// Usage: clamp-calc(MinSize, MaxSize, [StartWidth], [EndWidth])
+//
+// Default Start Width: 20rem (320px)
+// Default End Width: $bp-xl (Defined in _vars.scss)
+
+@function clamp-calc($min-size, $max-size, $min-width: 20rem, $max-width: $bp-xl, $base-font-size: 16) {
+  // 1. Normalize all inputs to raw pixel numbers
+  $min-size-px: to-px($min-size, $base-font-size);
+  $max-size-px: to-px($max-size, $base-font-size);
+  $min-width-px: to-px($min-width, $base-font-size);
+  $max-width-px: to-px($max-width, $base-font-size);
+
+  // 2. Safety Check: Prevent dividing by zero
+  @if $min-width-px == $max-width-px {
+    @error "clamp-calc(): $min-width and $max-width cannot be equal.";
+  }
+
+  // 3. Calculate Slope (Rate of change)
+  $slope: math.div(($max-size-px - $min-size-px), ($max-width-px - $min-width-px));
+
+  // 4. Calculate Y-Intercept (Base size at 0px width)
+  $intercept-px: $min-size-px - $slope * $min-width-px;
+
+  // 5. Convert to Output Units
+  $intercept-rem: px-to-rem($intercept-px, $base-font-size);
+  $slope-vw: $slope * 100; // Convert decimal to percentage for VW
+
+  // 6. Output Sorting (Defensive Coding)
+  // We use math.min/max to ensure the clamp bounds are always (Smallest, Val, Largest)
+  // This allows you to scale DOWN (e.g. 20px -> 10px) without breaking CSS syntax.
+  $output-min: px-to-rem(math.min($min-size-px, $max-size-px), $base-font-size);
+  $output-max: px-to-rem(math.max($min-size-px, $max-size-px), $base-font-size);
+
+  @return clamp(#{$output-min}, #{$intercept-rem} + #{$slope-vw}vw, #{$output-max});
+}

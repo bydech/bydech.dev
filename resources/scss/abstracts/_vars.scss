@@ -5,10 +5,14 @@ $bp-md: 47.9375rem; //767px
 $bp-lg: 63.9375rem; // 1023px
 $bp-xl: 80rem; // 1280px
 
-$fs-body-display: clamp(1.125rem, 1.1042rem + 0.1042vw, 1.1875rem);
-$fs-body-large: clamp(1.063rem, 1.042rem + 0.104vw, 1.125rem);
-$fs-body-default: clamp(1rem, 0.979rem + 0.104vw, 1.063rem);
-$fs-body-small: clamp(0.938rem, 0.917rem + 0.104vw, 1rem);
+// 18px -> 19px
+$fs-body-display: #{clamp-calc(1.125rem, 1.1875rem)};
+// 17px -> 18px
+$fs-body-large: #{clamp-calc(1.063rem, 1.125rem)};
+// 16px -> 17px
+$fs-body-default: #{clamp-calc(1rem, 1.063rem)};
+// 15px -> 16px
+$fs-body-small: #{clamp-calc(0.938rem, 1rem)};
 
 $font-sans:
   ibmplex,
