@@ -11,33 +11,30 @@
 // ------------------------------------------------------
 // We use %placeholders so we can extend them without bloating CSS
 
-%heading-display {
-  @include type-mono(clamp(1.8rem, 13cqi, 4rem), 1.3, 600, -0.02em);
+%heading-hero {
+  @include type-mono(var(--fs-heading-hero), 1.3, 600, -0.02em);
 }
 
 // H1: 32px → 48px
 %heading-h1 {
-  @include type-mono(clamp-calc(1.6rem, 3rem), 1.3, 600, -0.02em);
+  @include type-mono(var(--fs-heading-h1), 1.3, 600, -0.02em);
 }
 
 // H2: 28px → 36px
 %heading-h2 {
-  @include type-mono(clamp-calc(1.6rem, 2.375rem), 1.3, 600, -0.02em);
+  @include type-mono(var(--fs-heading-h2), 1.3, 600, -0.02em);
 }
 
 // H3: 24px → 28px
 %heading-h3 {
-  @include type-mono(clamp-calc(1.3rem, 1.5rem), 1.3, 500, -0.02em);
+  @include type-mono(var(--fs-heading-h3), 1.3, 500, -0.02em);
 }
 
-// H4: static 20px
 %heading-h4 {
-  @include type-mono(1.25rem, 1.4, 500, 0);
+  @include type-mono(var(--fs-heading-h4), 1.4, 500, 0);
 }
-
-// Body text
-%body-display {
-  @include type-sans(var(--fs-body-display), 1.5, 400, 0.005em);
+%heading-h5 {
+  @include type-mono(var(--fs-heading-h5), 1.4, 500, 0);
 }
 
 %body-large {
@@ -45,19 +42,23 @@
 }
 
 %body-default {
-  @include type-sans(var(--fs-body-default), 1.5, 400, 0.005em);
+  @include type-sans(var(--fs-body-default), 1.5, 400, 0);
 }
 
 %body-small {
-  @include type-sans(var(--fs-body-small), 1.5, 400, 0.005em);
+  @include type-sans(var(--fs-body-small), 1.5, 400, 0);
+}
+
+%body-extra-small {
+  @include type-sans(var(--fs-body-extra-small), 1.5, 400, 0);
 }
 
 // // ------------------------------------------------------
 // // 3. Classes (For use in HTML)
 // // ------------------------------------------------------
 
-.heading-display {
-  @extend %heading-display;
+.heading-hero {
+  @extend %heading-hero;
   margin-bottom: 0.25em;
   hyphens: auto;
 }
@@ -74,13 +75,10 @@
 .heading-h4 {
   @extend %heading-h4;
 }
-
-.body-display {
-  &,
-  & > p {
-    @extend %body-display;
-  }
+.heading-h5 {
+  @extend %heading-h5;
 }
+
 .body-large {
   &,
   & > p {
@@ -97,6 +95,13 @@
   &,
   & > p {
     @extend %body-small;
+  }
+}
+
+.body-extra-small {
+  &,
+  & > p {
+    @extend %body-extra-small;
   }
 }
 
@@ -139,6 +144,12 @@ h3 {
 
 h4 {
   @extend %heading-h4;
+  margin-bottom: 0.5em;
+  color: var(--text-primary);
+}
+
+h5 {
+  @extend %heading-h5;
   margin-bottom: 0.5em;
   color: var(--text-primary);
 }

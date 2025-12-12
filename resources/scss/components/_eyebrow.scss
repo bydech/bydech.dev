@@ -6,16 +6,17 @@
   --eyebrow-color: var(--color-primary);
   --eyebrow-py: 0.6em;
   --eyebrow-px: 0.8em;
-  --eyebrow-font-size: 1rem;
-  --eyebrow-icon-size: var(--icon-size-sm);
+  --eyebrow-font-size: var(--fs-eyebrow-default);
+  --eyebrow-icon-size: 1.125em;
 
-  @include type-mono(0.875rem, 1, 400);
+  @include type-mono(--eyebrow-font-size, 1, 400);
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding-inline: var(--eyebrow-px);
   padding-block: var(--eyebrow-py);
-  gap: 0.5em;
+  gap: 0.375em;
   border: 1px solid color-mix(in srgb, var(--eyebrow-color), transparent calc(100% - var(--eyebrow-border-opacity)));
   border-radius: 0.25rem;
   background-color: color-mix(in srgb, var(--eyebrow-color), transparent calc(100% - var(--eyebrow-bg-opacity)));
@@ -56,14 +57,19 @@
   // VARIANTS: SIZES
   // ------------------------------------------------------
 
+  &--extra-small {
+    --eyebrow-font-size: var(--fs-eyebrow-extra-small);
+  }
+
   &--small {
-    --eyebrow-font-size: 0.875rem;
-    --eyebrow-icon-size: var(--icon-size-sm);
+    --eyebrow-font-size: var(--fs-eyebrow-small);
   }
 
   &--large {
-    --eyebrow-font-size: 1.125rem;
-    --eyebrow-icon-size: var(--icon-size-lg);
+    --eyebrow-font-size: var(--fs-eyebrow-large);
+  }
+  &--extra-large {
+    --eyebrow-font-size: var(--fs-eyebrow-extra-large);
   }
 
   // ------------------------------------------------------

@@ -6,8 +6,8 @@
   --btn-radius: 0.25em;
   --btn-bg-color: var(--bg-theme-inverse);
   --btn-content-color: var(--text-primary-inverse);
-  --btn-icon-size: 1.5em;
-  --btn-font-size: var(--fs-body-default);
+  --btn-icon-size: 1.375em;
+  --btn-font-size: var(--fs-button-default);
   --btn-border-width: 3px;
   --btn-border-color: var(--color-primary);
 
@@ -34,17 +34,17 @@
     height: var(--btn-icon-size);
     fill: var(--btn-content-color);
   }
-
+  &--extra-small {
+    --btn-font-size: var(--fs-button-extra-small);
+  }
   &--small {
-    --btn-font-size: var(--fs-body-small);
+    --btn-font-size: var(--fs-button-small);
   }
-
   &--large {
-    --btn-font-size: var(--fs-body-large);
+    --btn-font-size: var(--fs-button-large);
   }
-
-  &--display {
-    --btn-font-size: var(--fs-body-display);
+  &--extra-large {
+    --btn-font-size: var(--fs-button-extra-large);
   }
 
   &--ghost {

@@ -1,5 +1,9 @@
+@use "../abstracts/index" as *;
 html {
-  font-size: 100%;
+  font-size: 97.5%;
+  @include mq-phone {
+    font-size: 100%;
+  }
 }
 body {
   font-size: 1rem;
