@@ -1,0 +1,17 @@
+@use "../abstracts/index" as *;
+
+.lighthouse-item {
+  display: flex;
+  align-items: center;
+
+  &__bullet {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 100%;
+    background-color: #86ff76;
+  }
+  &__text {
+    @include type-mono(var(--fs-body-extra-small), 1, 500, 0);
+    transform: translateX(-0.75rem);
+  }
+}
