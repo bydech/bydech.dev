@@ -14,7 +14,7 @@
   display: inline-flex;
   align-items: center;
   padding-inline-start: var(--btn-px);
-  padding-inline-end: calc(var(--btn-px) - (var(--btn-icon-size) * 0.25));
+  padding-inline-end: var(--btn-px);
   padding-block: var(--btn-py);
   gap: 0.75em;
   border: var(--btn-border-width) solid var(--btn-border-color);
@@ -24,6 +24,10 @@
   font-weight: 500;
   font-size: var(--btn-font-size);
   font-family: $font-mono;
+
+  &:has(.button__icon) {
+    padding-inline-end: calc(var(--btn-px) - (var(--btn-icon-size) * 0.25));
+  }
 
   &__text {
     font-size: var(--btn-font-size);
