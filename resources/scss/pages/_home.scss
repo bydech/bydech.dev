@@ -1,0 +1,44 @@
+@use "../abstracts/index" as *;
+
+.home {
+  &__hero {
+    .container {
+      padding-block: clamp-calc(4rem, 8rem);
+    }
+
+    .block {
+      padding-block: 0;
+      &--split {
+        justify-content: start;
+        gap: 4rem;
+      }
+      &--image {
+        position: relative;
+        align-items: center;
+        justify-content: end;
+        height: 100%;
+        border-bottom: 1px dashed var(--border-line);
+        img {
+          width: 280px;
+        }
+      }
+    }
+    .heading-hero {
+      width: 15ch;
+      max-width: 100%;
+    }
+    p {
+      width: 48ch;
+      max-width: 100%;
+    }
+    .line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 4px;
+      height: 48px;
+      transform: translateY(50%) translateX(-2.5px);
+      background-color: var(--color-primary);
+    }
+  }
+}
