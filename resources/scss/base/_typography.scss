@@ -198,3 +198,16 @@ small {
 .m-0 {
   margin: 0;
 }
+
+.text-primary {
+  color: var(--text-primary);
+}
+.text-primary-inverse {
+  color: var(--text-primary-inverse);
+}
+.text-secondary {
+  color: var(--text-secondary);
+}
+.text-secondary-inverse {
+  color: var(--text-secondary-inverse);
+}
