@@ -13,21 +13,28 @@
   --card-gradient-end: #7b76ff;
   --card-bg: var(--bg-inverse);
   --card-border-width: 2px;
-  --card-radius: 0.25rem;
+  --card-radius-outer: 0.25rem;
+  --card-radius-inner: 0.25rem;
   --card-padding: var(--space-m);
 
-  padding: 8px;
-  border-radius: var(--card-radius);
+  // Layout Logic
+  padding: 8px; // The visual "Border"
+  border-radius: var(--card-radius-outer);
   background: radial-gradient(circle at top left, var(--card-gradient-start), var(--card-gradient-end));
 
   &__inner {
     display: flex;
     flex-direction: column;
+
+    // Fill the card (Crucial for Grid usage)
     width: 100%;
+    height: 100%;
+
     padding: 12px;
-    border-radius: var(--card-radius);
+    border-radius: var(--card-radius-inner);
     background-color: var(--bg-theme-inverse);
     color: var(--text-primary-inverse);
+
     p,
     span {
       @include type-mono(0.875rem, 1, 300, 0);
@@ -39,6 +46,61 @@
       color: inherit;
     }
   }
+
+  // ----------------------------------------------------
+  // BROWSER MOCKUP ELEMENTS
+  // ----------------------------------------------------
+
+  // Modifier to remove default padding so header touches edges
+  &__inner--browser {
+    padding: 0;
+    overflow: hidden; // Ensures header corners clip to radius
+    gap: 0;
+  }
+
+  &__browser-header {
+    display: flex;
+    align-items: center;
+    height: 2.5rem; // Fixed height for header (~40px)
+    padding-inline: 1rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--text-primary-inverse), transparent 90%);
+
+    // Slightly lighter/distinct from inner bg to look like a toolbar
+    background-color: color-mix(in srgb, var(--bg-theme-inverse), white 10%);
+  }
+
+  &__browser-dots {
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-right: 2.5rem; // Push content/address bar away
+    border-radius: 50%;
+    background-color: #ff5f56; // Mac Red
+
+    // CSS Trick: Create Yellow and Green using shadow offsets
+    // This saves creating 3 separate divs
+    box-shadow:
+      1.25rem 0 0 #ffbd2e,
+      // Mac Yellow
+      2.5rem 0 0 #27c93f; // Mac Green
+  }
+
+  &__browser-body {
+    position: relative;
+    flex-grow: 1;
+    overflow: hidden;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; // Or 'contain' depending on screenshot
+      object-position: top center;
+    }
+  }
+
+  // ----------------------------------------------------
+  // TOGGLE COMPONENT
+  // ----------------------------------------------------
 
   &__toggle {
     display: inline-block;
@@ -106,11 +168,21 @@
     }
   }
 
+  // ----------------------------------------------------
+  // MODIFIERS
+  // ----------------------------------------------------
+
   &--frame {
     --card-border-width: var(--space-s);
   }
 
   &--rainbow {
     background: linear-gradient(135deg, #ff0080, #7928ca, #ff0080);
+  }
+
+  // NEW: Block-like behavior
+  // Removes border radius to look like a structural block
+  &--square {
+    --card-radius-outer: 0;
   }
 }
