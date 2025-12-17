@@ -1,0 +1,59 @@
+@use "../abstracts/vars" as *;
+
+// ------------------------------------------------------
+// SPACING UTILITIES
+// Generated from $spacing-scale in _vars.scss
+// ------------------------------------------------------
+
+@each $name, $value in $spacing-scale {
+  // MARGINS
+  .m-#{$name} {
+    margin: var(--space-#{$name});
+  }
+  .mt-#{$name} {
+    margin-top: var(--space-#{$name});
+  }
+  .mb-#{$name} {
+    margin-bottom: var(--space-#{$name});
+  }
+  .ml-#{$name} {
+    margin-left: var(--space-#{$name});
+  }
+  .mr-#{$name} {
+    margin-right: var(--space-#{$name});
+  }
+  .my-#{$name} {
+    margin-block: var(--space-#{$name});
+  } // Top & Bottom
+  .mx-#{$name} {
+    margin-inline: var(--space-#{$name});
+  } // Left & Right
+
+  // PADDING
+  .p-#{$name} {
+    padding: var(--space-#{$name});
+  }
+  .pt-#{$name} {
+    padding-top: var(--space-#{$name});
+  }
+  .pb-#{$name} {
+    padding-bottom: var(--space-#{$name});
+  }
+  .pl-#{$name} {
+    padding-left: var(--space-#{$name});
+  }
+  .pr-#{$name} {
+    padding-right: var(--space-#{$name});
+  }
+  .py-#{$name} {
+    padding-block: var(--space-#{$name});
+  }
+  .px-#{$name} {
+    padding-inline: var(--space-#{$name});
+  }
+
+  // GAPS (Flex/Grid)
+  .gap-#{$name} {
+    gap: var(--space-#{$name});
+  }
+}

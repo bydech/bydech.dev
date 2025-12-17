@@ -1,4 +1,4 @@
-@use "../abstracts/index" as *;
+@use "../abstracts/vars" as *;
 
 :root {
   /* =========================================
@@ -10,14 +10,12 @@
   --color-green: oklch(90% 0.208 141.41);
 
   /* DARK PRIMITIVES*/
-
   --dark-bg: oklch(0% 0 0);
   --dark-text-primary: oklch(98% 0 0);
   --dark-text-secondary: oklch(0.7668 0 0);
   --dark-border: oklch(0.3371 0.0227 311.18);
 
   /* LIGHT PRIMITIVES*/
-
   --light-bg: oklch(100% 0 0);
   --light-text-primary: oklch(10% 0 0);
   --light-text-secondary: oklch(62.5% 0 0);
@@ -29,64 +27,75 @@
 
   --bg-theme: var(--light-bg);
   --bg-theme-inverse: var(--dark-bg);
+
   --text-primary: var(--light-text-primary);
   --text-primary-inverse: var(--dark-text-primary);
+
   --text-secondary: var(--light-text-secondary);
   --text-secondary-inverse: var(--dark-text-secondary);
+
   --border-line: var(--light-border);
   --border-line-inverse: var(--dark-border);
+
   --color-primary: var(--color-purple);
 
-  // ------------------------------------------------------
-  // font sizes
-  // ------------------------------------------------------
+  /* =========================================
+     3. GENERATED SCALES (From _vars.scss Maps)
+     ========================================= */
 
-  --text-3xs: 0.875rem; /*14px */
-  --text-2xs: 0.9375rem; /* 15px */
-  --text-xs: 1rem; /* 16px */
-  --text-sm: 1.0625rem; /* 17px */
-  --text-base: 1.125rem; /* 18px */
-  --text-lg: 1.1875rem; /* 19px */
-  --text-xl: 1.375rem; /* 22px  */
-  --text-2xl: 1.5rem; /* 24px */
-  --text-3xl: 2.125rem; /* 32px -> 34px */
-  --text-4xl: #{clamp-calc(2.25rem, 2.5rem)}; /* 36px -> 40px */
-  --text-5xl: #{clamp-calc(3rem, 3.5rem)}; /* 48px -> 56px */
+  // Typography Scale (--text-xs, --text-base, --text-5xl, etc.)
+  @each $name, $value in $type-scale {
+    --text-#{$name}: #{$value};
+  }
 
+  // Icon Scale (--icon-size-sm, --icon-size-lg, etc.)
+  @each $name, $value in $icon-scale {
+    --icon-size-#{$name}: #{$value};
+  }
+
+  // Spacing Scale (--space-m, --space-xl, etc.)
+  @each $name, $value in $spacing-scale {
+    --space-#{$name}: #{$value};
+  }
+
+  /* =========================================
+     4. SEMANTIC ALIASES (CSS)
+     ========================================= */
+  // These map specific roles to the generated variables above.
+  // This mirrors the logic in your _vars.scss file.
+
+  // Body
   --fs-body-extra-small: var(--text-xs);
   --fs-body-small: var(--text-sm);
   --fs-body-default: var(--text-base);
   --fs-body-large: var(--text-lg);
 
+  // Headings
   --fs-heading-h5: var(--text-lg);
   --fs-heading-h4: var(--text-xl);
   --fs-heading-h3: var(--text-2xl);
   --fs-heading-h2: var(--text-3xl);
   --fs-heading-h1: var(--text-5xl);
-  --fs-heading-hero: clamp(1.8rem, 13cqi, 3.5rem);
+  // Hero is a raw clamp, so we output the value directly
+  --fs-heading-hero: #{$fs-heading-hero};
 
+  // Buttons
   --fs-button-extra-small: var(--text-3xs);
   --fs-button-small: var(--text-xs);
   --fs-button-default: var(--text-sm);
   --fs-button-large: var(--text-base);
   --fs-button-extra-large: var(--text-lg);
 
+  // Eyebrows
   --fs-eyebrow-extra-small: var(--text-3xs);
   --fs-eyebrow-small: var(--text-xs);
   --fs-eyebrow-default: var(--text-sm);
   --fs-eyebrow-large: var(--text-base);
   --fs-eyebrow-extra-large: var(--text-lg);
-
-  --icon-size-xs: 0.75rem;
-  --icon-size-sm: 1rem;
-  --icon-size-md: 1.5rem;
-  --icon-size-lg: 2rem;
-  --icon-size-xl: 2.5rem;
-  --icon-size-xxl: 3rem;
 }
 
 /* =========================================
-   3. SECTION THEMING
+   5. SECTION THEMING
    ========================================= */
 
 /* Force a section to be Light Mode */
@@ -95,6 +104,12 @@
   --text-primary: var(--light-text-primary);
   --text-secondary: var(--light-text-secondary);
   --border-line: var(--light-border);
+
+  // Inverse Values (for Buttons/Cards inside this theme)
+  --bg-theme-inverse: var(--dark-bg);
+  --text-primary-inverse: var(--dark-text-primary);
+  --text-secondary-inverse: var(--dark-text-secondary);
+  --border-line-inverse: var(--dark-border);
 
   /* Slightly darker accent for visibility on white */
   --color-primary: oklch(55% 0.25 280);
@@ -109,6 +124,12 @@
   --text-primary: var(--dark-text-primary);
   --text-secondary: var(--dark-text-secondary);
   --border-line: var(--dark-border);
+
+  // Inverse Values
+  --bg-theme-inverse: var(--light-bg);
+  --text-primary-inverse: var(--light-text-primary);
+  --text-secondary-inverse: var(--light-text-secondary);
+  --border-line-inverse: var(--light-border);
 
   background-color: var(--bg-theme);
   color: var(--text-primary);

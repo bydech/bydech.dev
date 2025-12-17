@@ -1,5 +1,4 @@
 @use "sass:math";
-@use "vars" as *; // Imports variables like $bp-xl
 
 // ----------------------------------------------------------
 // 1. HELPERS (Internal use for clamp-calc)
@@ -42,7 +41,7 @@
 // Default Start Width: 20rem (320px)
 // Default End Width: $bp-xl (Defined in _vars.scss)
 
-@function clamp-calc($min-size, $max-size, $min-width: 20rem, $max-width: $bp-xl, $base-font-size: 16) {
+@function clamp-calc($min-size, $max-size, $min-width: 20rem, $max-width: 80rem, $base-font-size: 16) {
   // 1. Normalize all inputs to raw pixel numbers
   $min-size-px: to-px($min-size, $base-font-size);
   $max-size-px: to-px($max-size, $base-font-size);
