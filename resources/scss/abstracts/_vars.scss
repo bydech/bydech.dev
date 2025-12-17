@@ -30,10 +30,10 @@ $type-scale: (
   // 19px
   "xl": 1.375rem,
   // 22px
-  "2xl": 1.625rem,
-  // 26px
-  "3xl": 2.125rem,
-  // 32px -> 34px
+  "2xl": 1.5rem,
+  // 24px
+  "3xl": 2.25rem,
+  // 36px
   "4xl": #{clamp-calc(2.25rem, 2.5rem)},
   // 36px -> 40px
   "5xl": #{clamp-calc(3rem, 3.5rem)}, // 48px -> 56px

@@ -17,17 +17,17 @@
 
 // H1: 32px → 48px
 %heading-h1 {
-  @include type-mono(var(--fs-heading-h1), 1.3, 600, -0.02em);
+  @include type-mono(var(--fs-heading-h1), 1.3, 600, -0.015em);
 }
 
 // H2: 28px → 36px
 %heading-h2 {
-  @include type-mono(var(--fs-heading-h2), 1.3, 600, -0.02em);
+  @include type-mono(var(--fs-heading-h2), 1.3, 600, -0.015em);
 }
 
 // H3: 24px → 28px
 %heading-h3 {
-  @include type-mono(var(--fs-heading-h3), 1.3, 500, -0.02em);
+  @include type-mono(var(--fs-heading-h3), 1.3, 500, -0.015em);
 }
 
 %heading-h4 {
@@ -42,11 +42,11 @@
 }
 
 %body-default {
-  @include type-sans(var(--fs-body-default), 1.5, 400, 0);
+  @include type-sans(var(--fs-body-default), 1.5, 400, 0.0075em);
 }
 
 %body-small {
-  @include type-sans(var(--fs-body-small), 1.5, 400, 0);
+  @include type-sans(var(--fs-body-small), 1.5, 400, 0.0075em);
 }
 
 %body-extra-small {
