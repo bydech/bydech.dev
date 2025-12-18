@@ -1,3 +1,4 @@
+@use "sass:map"; // <--- Import the map module
 @use "functions" as *;
 
 // ------------------------------------------------------
@@ -30,10 +31,10 @@ $type-scale: (
   // 19px
   "xl": 1.375rem,
   // 22px
-  "2xl": 1.5rem,
-  // 24px
-  "3xl": 2.25rem,
-  // 36px
+  "2xl": 1.625rem,
+  // 26px
+  "3xl": 2.125rem,
+  // 32px -> 34px
   "4xl": #{clamp-calc(2.25rem, 2.5rem)},
   // 36px -> 40px
   "5xl": #{clamp-calc(3rem, 3.5rem)}, // 48px -> 56px
@@ -63,35 +64,35 @@ $spacing-scale: (
 // ------------------------------------------------------
 // 3. SEMANTIC ALIASES (SCSS)
 // ------------------------------------------------------
-// These map to raw values so you can do math
+// Replaced map-get with map.get to fix warnings
 
 // Body
-$fs-body-extra-small: map-get($type-scale, "xs");
-$fs-body-small: map-get($type-scale, "sm");
-$fs-body-default: map-get($type-scale, "base");
-$fs-body-large: map-get($type-scale, "lg");
+$fs-body-extra-small: map.get($type-scale, "xs");
+$fs-body-small: map.get($type-scale, "sm");
+$fs-body-default: map.get($type-scale, "base");
+$fs-body-large: map.get($type-scale, "lg");
 
 // Headings
-$fs-heading-h5: map-get($type-scale, "lg");
-$fs-heading-h4: map-get($type-scale, "xl");
-$fs-heading-h3: map-get($type-scale, "2xl");
-$fs-heading-h2: map-get($type-scale, "3xl");
-$fs-heading-h1: map-get($type-scale, "5xl");
-$fs-heading-hero: clamp(1.8rem, 13cqi, 3.5rem); // Unique clamp logic
+$fs-heading-h5: map.get($type-scale, "lg");
+$fs-heading-h4: map.get($type-scale, "xl");
+$fs-heading-h3: map.get($type-scale, "2xl");
+$fs-heading-h2: map.get($type-scale, "3xl");
+$fs-heading-h1: map.get($type-scale, "5xl");
+$fs-heading-hero: clamp(1.8rem, 13cqi, 3.5rem);
 
 // Buttons
-$fs-button-extra-small: map-get($type-scale, "3xs");
-$fs-button-small: map-get($type-scale, "xs");
-$fs-button-default: map-get($type-scale, "sm");
-$fs-button-large: map-get($type-scale, "base");
-$fs-button-extra-large: map-get($type-scale, "lg");
+$fs-button-extra-small: map.get($type-scale, "3xs");
+$fs-button-small: map.get($type-scale, "xs");
+$fs-button-default: map.get($type-scale, "sm");
+$fs-button-large: map.get($type-scale, "base");
+$fs-button-extra-large: map.get($type-scale, "lg");
 
 // Eyebrows
-$fs-eyebrow-extra-small: map-get($type-scale, "3xs");
-$fs-eyebrow-small: map-get($type-scale, "xs");
-$fs-eyebrow-default: map-get($type-scale, "sm");
-$fs-eyebrow-large: map-get($type-scale, "base");
-$fs-eyebrow-extra-large: map-get($type-scale, "lg");
+$fs-eyebrow-extra-small: map.get($type-scale, "3xs");
+$fs-eyebrow-small: map.get($type-scale, "xs");
+$fs-eyebrow-default: map.get($type-scale, "sm");
+$fs-eyebrow-large: map.get($type-scale, "base");
+$fs-eyebrow-extra-large: map.get($type-scale, "lg");
 
 // ------------------------------------------------------
 // 4. FONT FAMILIES
