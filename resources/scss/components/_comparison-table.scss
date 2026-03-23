@@ -1,0 +1,72 @@
+@use "../abstracts/index" as *;
+*:has(> .comparison-table) {
+  border-right: none !important; // !important might be needed depending on your Bricks grid setup
+}
+.comparison-table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 !important;
+  border: 0 !important;
+
+  @include mq-phone-xs {
+    padding-bottom: var(--space-4);
+    overflow-x: auto;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.25fr;
+    flex-grow: 1;
+    width: 100%;
+
+    &:last-child {
+      .comparison-table__cell {
+        border-bottom: none;
+      }
+    }
+
+    &--header {
+      flex-grow: 0.5;
+    }
+  }
+
+  &__cell {
+    display: flex;
+    align-items: center;
+    min-width: 14rem;
+    height: 100%;
+    min-height: 4rem;
+    padding: var(--space-4) var(--space-8);
+    border-bottom: 1px solid var(--border-line);
+    font-size: var(--fs-body-extra-small);
+
+    &:nth-child(1) {
+      color: var(--text-primary);
+    }
+
+    &:nth-child(2) {
+      border-left: 1px solid var(--border-line);
+      color: var(--text-tertiary);
+    }
+
+    &--highlight {
+      @include type-mono(var(--fs-body-extra-small), 1.5, 500, 0);
+      gap: var(--space-8);
+      border-right: 1px solid color-mix(in oklch, var(--color-primary), transparent 60%);
+      border-bottom: 1px solid color-mix(in oklch, var(--color-primary), transparent 60%);
+      border-left: 1px solid color-mix(in oklch, var(--color-primary), transparent 60%);
+      background-color: color-mix(in oklch, var(--color-primary), transparent 90%);
+      color: var(--color-primary);
+
+      svg {
+        width: var(--icon-size-lg);
+        height: var(--icon-size-lg);
+        border: none;
+        path {
+          fill: currentColor;
+        }
+      }
+    }
+  }
+}

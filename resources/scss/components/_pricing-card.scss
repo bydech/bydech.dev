@@ -1,0 +1,94 @@
+@use "../abstracts/index" as *;
+
+.pricing-table {
+  display: grid;
+  grid-template-columns: 1fr; // Mobile: Stacked
+  height: 100%;
+
+  @include mq-tablet {
+    grid-template-columns: repeat(3, 1fr); // Desktop: 3 equal cards
+  }
+}
+
+.pricing-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  border-bottom: 1px solid var(--border-line);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  @include mq-tablet {
+    border-bottom: none;
+    border-left: 1px solid var(--border-line);
+
+    &:first-child {
+      border-left: none;
+    }
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--space-8);
+    padding-inline: var(--space-14);
+    padding-block: var(--space-20);
+    gap: var(--space-4);
+    border-bottom: 1px solid var(--border-line);
+    h4 {
+      display: flex;
+      font-size: var(--fs-heading-h4);
+      text-transform: uppercase;
+    }
+    path {
+      fill: var(--text-primary);
+    }
+
+    &-price {
+      @include type-mono(var(--text-lg), 1, 0);
+      display: flex;
+      align-items: center;
+      margin-top: var(--space-14);
+      gap: var(--space-2);
+      color: var(--text-primary);
+      font-size: var(--fs-body-default) !important;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    padding-inline: var(--space-14);
+    padding-block: var(--space-20);
+    gap: var(--space-6);
+    color: var(--text-primary);
+    li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      &::before {
+        display: block;
+        flex-shrink: 0;
+        width: var(--icon-size-base);
+        height: 1.25rem;
+
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23030303' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        content: "";
+      }
+    }
+    span {
+      font-size: var(--fs-body-small);
+    }
+  }
+}

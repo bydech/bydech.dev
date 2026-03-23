@@ -1,4 +1,4 @@
-@use "../abstracts/vars" as *;
+@use "../abstracts/index" as *;
 
 :root {
   /* =========================================
@@ -8,18 +8,21 @@
   /* COLORS */
   --color-purple: oklch(65% 0.25 280);
   --color-green: oklch(90% 0.208 141.41);
+  --color-blue: oklch(0.4865 0.228027 262.1747);
 
-  /* DARK PRIMITIVES*/
+  /* DARK PRIMITIVES */
   --dark-bg: oklch(0% 0 0);
   --dark-text-primary: oklch(98% 0 0);
-  --dark-text-secondary: oklch(0.7668 0 0);
-  --dark-border: oklch(0.3371 0.0227 311.18);
+  --dark-text-secondary: oklch(75% 0 0);
+  --dark-text-tertiary: oklch(55% 0 0);
+  --dark-border: oklch(33.71% 0.0227 311.18);
 
-  /* LIGHT PRIMITIVES*/
+  /* LIGHT PRIMITIVES */
   --light-bg: oklch(100% 0 0);
   --light-text-primary: oklch(10% 0 0);
-  --light-text-secondary: oklch(62.5% 0 0);
-  --light-border: oklch(0.9205 0.0042 301.42);
+  --light-text-secondary: oklch(42% 0 0);
+  --light-text-tertiary: oklch(65% 0 0);
+  --light-border: oklch(92.05% 0.0042 301.42);
 
   /* =========================================
      2. GLOBAL DEFAULTS (Base = Light Mode)
@@ -33,6 +36,9 @@
 
   --text-secondary: var(--light-text-secondary);
   --text-secondary-inverse: var(--dark-text-secondary);
+
+  --text-tertiary: var(--light-text-tertiary);
+  --text-tertiary-inverse: var(--dark-text-tertiary);
 
   --border-line: var(--light-border);
   --border-line-inverse: var(--dark-border);
@@ -58,6 +64,10 @@
     --space-#{$name}: #{$value};
   }
 
+  @each $name, $value in $button-scale {
+    --btn-text-#{$name}: #{$value};
+  }
+
   /* =========================================
      4. SEMANTIC ALIASES (CSS)
      ========================================= */
@@ -65,33 +75,50 @@
   // This mirrors the logic in your _vars.scss file.
 
   // Body
-  --fs-body-extra-small: var(--text-xs);
-  --fs-body-small: var(--text-sm);
-  --fs-body-default: var(--text-base);
-  --fs-body-large: var(--text-lg);
+
+  --fs-body-extra-small: var(--text-sm);
+  --fs-body-small: var(--text-base);
+  --fs-body-default: var(--text-lg);
+  --fs-body-large: var(--text-xl);
+
+  @include mq-tablet {
+    --fs-body-extra-small: var(--text-xs);
+    --fs-body-small: var(--text-sm);
+    --fs-body-default: var(--text-base);
+    --fs-body-large: var(--text-lg);
+  }
 
   // Headings
   --fs-heading-h5: var(--text-lg);
   --fs-heading-h4: var(--text-xl);
   --fs-heading-h3: var(--text-2xl);
   --fs-heading-h2: var(--text-3xl);
-  --fs-heading-h1: var(--text-5xl);
+  --fs-heading-h1: var(--text-4xl);
+
   // Hero is a raw clamp, so we output the value directly
   --fs-heading-hero: #{$fs-heading-hero};
 
   // Buttons
-  --fs-button-extra-small: var(--text-3xs);
-  --fs-button-small: var(--text-xs);
-  --fs-button-default: var(--text-sm);
-  --fs-button-large: var(--text-base);
-  --fs-button-extra-large: var(--text-lg);
+  --fs-button-extra-small: var(--btn-text-xs);
+  --fs-button-small: var(--btn-text-sm);
+  --fs-button-default: var(--btn-text-default);
+  --fs-button-large: var(--btn-text-lg);
+  --fs-button-extra-large: var(--btn-text-xl);
 
   // Eyebrows
-  --fs-eyebrow-extra-small: var(--text-3xs);
+  --fs-eyebrow-extra-small: var(--text-2xs);
   --fs-eyebrow-small: var(--text-xs);
   --fs-eyebrow-default: var(--text-sm);
   --fs-eyebrow-large: var(--text-base);
   --fs-eyebrow-extra-large: var(--text-lg);
+
+  @include mq-tablet {
+    --fs-eyebrow-extra-small: var(--text-3xs);
+    --fs-eyebrow-small: var(--text-2xs);
+    --fs-eyebrow-default: var(--text-xs);
+    --fs-eyebrow-large: var(--text-sm);
+    --fs-eyebrow-extra-large: var(--text-base);
+  }
 }
 
 /* =========================================
@@ -103,12 +130,14 @@
   --bg-theme: var(--light-bg);
   --text-primary: var(--light-text-primary);
   --text-secondary: var(--light-text-secondary);
+  --text-tertiary: var(--light-text-tertiary);
   --border-line: var(--light-border);
 
   // Inverse Values (for Buttons/Cards inside this theme)
   --bg-theme-inverse: var(--dark-bg);
   --text-primary-inverse: var(--dark-text-primary);
   --text-secondary-inverse: var(--dark-text-secondary);
+  --text-tertiary-inverse: var(--dark-text-tertiary);
   --border-line-inverse: var(--dark-border);
 
   /* Slightly darker accent for visibility on white */
@@ -123,12 +152,14 @@
   --bg-theme: var(--dark-bg);
   --text-primary: var(--dark-text-primary);
   --text-secondary: var(--dark-text-secondary);
+  --text-tertiary: var(--dark-text-tertiary);
   --border-line: var(--dark-border);
 
   // Inverse Values
   --bg-theme-inverse: var(--light-bg);
   --text-primary-inverse: var(--light-text-primary);
   --text-secondary-inverse: var(--light-text-secondary);
+  --text-tertiary-inverse: var(--light-text-tertiary);
   --border-line-inverse: var(--light-border);
 
   background-color: var(--bg-theme);

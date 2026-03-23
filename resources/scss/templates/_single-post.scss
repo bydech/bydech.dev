@@ -1,0 +1,31 @@
+@use "../abstracts/index" as *;
+
+.single-post {
+  .container {
+    align-items: center;
+  }
+
+  p {
+    max-width: 100%;
+    color: var(--color-secondary);
+  }
+
+  &__hero {
+    text-align: center;
+
+    &-featured-image {
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+    .post-meta {
+      margin-bottom: var(--space-4);
+      .item {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .block {
+    max-width: 850px;
+  }
+}

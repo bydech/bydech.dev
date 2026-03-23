@@ -11,11 +11,17 @@
 @use "layout/header";
 @use "layout/utilities";
 
+@use "templates/single-post";
+
 @use "components/nav";
+@use "components/contact-form";
 @use "components/icons";
 @use "components/eyebrow";
 @use "components/button";
+@use "components/pricing-card";
+@use "components/comparison-table";
 @use "components/lighthouse-item";
 @use "components/highlight-card";
+@use "components/feature-block";
 
 @use "pages/home";

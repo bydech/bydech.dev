@@ -4,17 +4,17 @@
   container-name: layout-block;
   container-type: inline-size;
   display: flex;
-  padding-inline: 8px;
-  padding-block: 1.5rem;
+  padding-inline: var(--space-2);
+  padding-block: var(--space-20);
 
   @include mq-phone-xs {
-    padding-inline: #{clamp-calc(1.25rem, 1.563rem, $bp-xxs, $bp-sm)};
-    padding-block: #{clamp-calc(1.25rem, 1.563rem, $bp-xxs, $bp-sm)};
+    padding-inline: #{clamp-calc(1.25rem, 1.5rem, $bp-xxs, $bp-sm)};
+    padding-block: var(--space-20);
   }
 
   @include mq-laptop {
-    padding-inline: #{clamp-calc(1.563rem, 2.5rem, $bp-lg, $bp-xl)};
-    padding-block: #{clamp-calc(1.563rem, 2.5rem, $bp-lg, $bp-xl)};
+    padding-inline: #{clamp-calc(1.5rem, 2.5rem, $bp-lg, $bp-xl)};
+    padding-block: #{clamp-calc(1.75rem, 2.5rem, $bp-lg, $bp-xl)};
   }
 
   &--border {
@@ -27,12 +27,29 @@
     }
   }
 
+  &--padding-lg {
+    padding-inline: 1.5rem;
+    padding-block: 2.5rem;
+
+    @include mq-phone-xs {
+      padding-inline: #{clamp-calc(1.5rem, 2rem, $bp-xxs, $bp-sm)};
+      padding-block: #{clamp-calc(2.5rem, 3rem, $bp-xxs, $bp-sm)};
+    }
+
+    @include mq-laptop {
+      padding-inline: #{clamp-calc(2.5rem, 3rem, $bp-lg, $bp-xl)};
+      padding-block: #{clamp-calc(3rem, 4rem, $bp-lg, $bp-xl)};
+    }
+  }
+
   &--split {
-    justify-content: space-between; // Pushes top and bottom apart
+    justify-content: space-between;
     height: 100%;
     gap: 64px;
   }
-
+  &--snippet {
+    max-width: 53rem;
+  }
   &--intro {
     padding-block: 2rem;
 
@@ -42,6 +59,23 @@
 
     @include mq-laptop {
       padding-block: #{clamp-calc(6rem, 6.25rem, $bp-lg, $bp-xl)};
+    }
+  }
+
+  &--center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    * {
+      margin-inline: auto;
+    }
+
+    .button,
+    .eyebrow {
+      justify-content: center;
     }
   }
 }

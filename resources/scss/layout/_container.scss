@@ -11,7 +11,7 @@
   max-width: $bp-xl;
 
   @include mq-phone-xs {
-    width: calc(100% - 32px);
+    width: calc(100% - 16px);
   }
 
   &--border {

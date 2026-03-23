@@ -15,12 +15,38 @@
   --card-border-width: 2px;
   --card-radius-outer: 0.25rem;
   --card-radius-inner: 0.25rem;
-  --card-padding: var(--space-m);
+  --card-padding: var(--space-md);
 
   // Layout Logic
   padding: 8px; // The visual "Border"
   border-radius: var(--card-radius-outer);
   background: radial-gradient(circle at top left, var(--card-gradient-start), var(--card-gradient-end));
+
+  &--green {
+    --card-gradient-start: var(--color-green);
+    --card-gradient-end: var(--color-green);
+  }
+
+  &--yellow {
+    --card-gradient-start: #ffb75e;
+    --card-gradient-end: #ed8f03;
+  }
+
+  &--red {
+    --card-gradient-start: #cb2d3e;
+    --card-gradient-end: #ef473a;
+  }
+  &--blue {
+    --card-gradient-start: var(--color-blue);
+    --card-gradient-end: color-mix(in oklch, var(--color-blue), white 30%);
+  }
+
+  // If you want a solid color border instead of a gradient,
+  // just set both variables to the exact same color!
+  &--solid-red {
+    --card-gradient-start: #ef473a;
+    --card-gradient-end: #ef473a;
+  }
 
   &__inner {
     display: flex;
@@ -66,7 +92,7 @@
     border-bottom: 1px solid color-mix(in srgb, var(--text-primary-inverse), transparent 90%);
 
     // Slightly lighter/distinct from inner bg to look like a toolbar
-    background-color: color-mix(in srgb, var(--bg-theme-inverse), white 10%);
+    background-color: color-mix(in srgb, var(--bg-theme), white 10%);
   }
 
   &__browser-dots {
@@ -173,7 +199,7 @@
   // ----------------------------------------------------
 
   &--frame {
-    --card-border-width: var(--space-s);
+    --card-border-width: var(--space-sm);
   }
 
   &--rainbow {

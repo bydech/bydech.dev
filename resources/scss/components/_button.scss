@@ -3,7 +3,7 @@
 .button {
   --btn-py: 0.55em;
   --btn-px: 1.25em;
-  --btn-radius: 0.25em;
+  --btn-radius: 0.5em;
   --btn-bg-color: var(--bg-theme-inverse);
   --btn-content-color: var(--text-primary-inverse);
   --btn-icon-size: 1.375em;
@@ -37,6 +37,9 @@
     width: var(--btn-icon-size);
     height: var(--btn-icon-size);
     fill: var(--btn-content-color);
+    path {
+      fill: var(--btn-content-color);
+    }
   }
   &--extra-small {
     --btn-font-size: var(--fs-button-extra-small);
@@ -55,5 +58,82 @@
     --btn-bg-color: transparent;
     --btn-content-color: var(--bg-theme-inverse);
     --btn-border-color: var(--border-line);
+  }
+  &--transparent {
+    --btn-px: 0;
+    --btn-py: 0;
+    --btn-bg-color: transparent;
+    --btn-content-color: var(--bg-theme-inverse);
+    --btn-border-color: none;
+  }
+  &--purple {
+    --btn-bg-color: color-mix(in srgb, var(--color-primary), transparent 80%);
+    --btn-border-color: color-mix(in srgb, var(--color-primary), transparent 60%);
+    --btn-content-color: var(--color-primary);
+    --btn-border-width: 1px;
+
+    &:hover {
+      --btn-bg-color: color-mix(in srgb, var(--color-primary), transparent 70%);
+    }
+  }
+  &--purple {
+    --btn-bg-color: color-mix(in srgb, var(--color-primary), transparent 80%);
+    --btn-border-color: color-mix(in srgb, var(--color-primary), transparent 60%);
+    --btn-content-color: var(--text-primary);
+    --btn-border-width: 3px;
+
+    &:hover {
+      --btn-bg-color: color-mix(in srgb, var(--color-primary), transparent 70%);
+    }
+  }
+  &--gray {
+    --btn-bg-color: color-mix(in srgb, var(--dark-text-secondary), transparent 80%);
+    --btn-border-color: color-mix(in srgb, var(--dark-text-secondary), transparent 60%);
+    --btn-content-color: var(--text-primary);
+    --btn-border-width: 3px;
+
+    &:hover {
+      --btn-bg-color: color-mix(in srgb, var(--dark-text-secondary), transparent 70%);
+    }
+  }
+
+  // ------------------------------------------------------
+  // VARIANTS: ANIMATIONS
+  // ------------------------------------------------------
+
+  @keyframes chevron-wave {
+    0% {
+      opacity: 0.2;
+    }
+    20% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.2;
+    }
+  }
+
+  &--wave {
+    // We only trigger the animation on hover
+    &:hover {
+      .button__icon path {
+        // I'm using the snappier 0.9s timing here, but you can change it back to 1.5s if needed!
+        animation: chevron-wave 0.9s infinite linear;
+
+        // Base opacity for paths that aren't actively "waving"
+        opacity: 0.2;
+
+        // Stagger the animation for each arrow path
+        &:nth-child(1) {
+          animation-delay: 0s;
+        }
+        &:nth-child(2) {
+          animation-delay: 0.15s;
+        }
+        &:nth-child(3) {
+          animation-delay: 0.3s;
+        }
+      }
+    }
   }
 }

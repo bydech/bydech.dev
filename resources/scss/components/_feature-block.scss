@@ -1,0 +1,12 @@
+@use "../abstracts/index" as *;
+
+.feature-block {
+  &__text p {
+    // font-size: var(--text-lg);
+
+    // @include mq-tablet {
+    //   font-size: var(--text-sm);
+    // }
+    font-size: var(--fs-body-small);
+  }
+}

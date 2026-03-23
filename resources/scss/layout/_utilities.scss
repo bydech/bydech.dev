@@ -1,12 +1,19 @@
 @use "../abstracts/vars" as *;
 
 // ------------------------------------------------------
-// SPACING UTILITIES
-// Generated from $spacing-scale in _vars.scss
+// GENERATED UTILITIES
 // ------------------------------------------------------
 
+// 1. TEXT SIZES
+@each $name, $value in $type-scale {
+  .text-#{$name} {
+    font-size: var(--text-#{$name});
+  }
+}
+
+// 2. SPACING HELPERS
 @each $name, $value in $spacing-scale {
-  // MARGINS
+  // Margin
   .m-#{$name} {
     margin: var(--space-#{$name});
   }
@@ -24,12 +31,12 @@
   }
   .my-#{$name} {
     margin-block: var(--space-#{$name});
-  } // Top & Bottom
+  }
   .mx-#{$name} {
     margin-inline: var(--space-#{$name});
-  } // Left & Right
+  }
 
-  // PADDING
+  // Padding
   .p-#{$name} {
     padding: var(--space-#{$name});
   }
@@ -52,7 +59,7 @@
     padding-inline: var(--space-#{$name});
   }
 
-  // GAPS (Flex/Grid)
+  // Gap
   .gap-#{$name} {
     gap: var(--space-#{$name});
   }

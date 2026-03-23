@@ -17,82 +17,66 @@ $bp-xl: 80rem; // 1280px
 
 // Typography Scale
 $type-scale: (
-  "3xs": 0.875rem,
-  // 14px
-  "2xs": 0.9375rem,
-  // 15px
-  "xs": 1rem,
-  // 16px
-  "sm": 1.0625rem,
-  // 17px
-  "base": 1.125rem,
-  // 18px
-  "lg": 1.1875rem,
-  // 19px
-  "xl": 1.375rem,
-  // 22px
-  "2xl": 1.625rem,
-  // 26px
-  "3xl": 2.125rem,
-  // 32px -> 34px
-  "4xl": #{clamp-calc(2.25rem, 2.5rem)},
-  // 36px -> 40px
-  "5xl": #{clamp-calc(3rem, 3.5rem)}, // 48px -> 56px
+  "3xs": #{clamp-calc(0.75rem, 0.875rem)},
+  "2xs": #{clamp-calc(0.8125rem, 0.9375rem)},
+  "xs": #{clamp-calc(0.875rem, 1rem)},
+  "sm": #{clamp-calc(0.9375rem, 1.0625rem)},
+  "base": #{clamp-calc(1.0625rem, 1.125rem)},
+  "lg": #{clamp-calc(1.125rem, 1.25rem)},
+  "xl": #{clamp-calc(1.1875rem, 1.5rem)},
+  "2xl": #{clamp-calc(1.5rem, 1.75rem)},
+  "3xl": #{clamp-calc(1.75rem, 2.125rem)},
+  "4xl": #{clamp-calc(2rem, 2.5rem)},
+  "5xl": #{clamp-calc(2.75rem, 3.5rem)},
 );
 
 // Icon Scale
 $icon-scale: (
-  "xs": 0.75rem,
+  "xxs": 0.75rem,
+  "xs": 0.825rem,
   "sm": 1rem,
+  "base": 1.25rem,
   "md": 1.5rem,
-  "lg": 2rem,
-  "xl": 2.5rem,
+  "lg": 1.75rem,
+  "xl": 2rem,
   "xxl": 3rem,
+);
+
+$button-scale: (
+  "xs": 0.75rem,
+  "sm": 0.875rem,
+  "default": 0.95rem,
+  "lg": 1.1rem,
+  "xl": 1.2rem,
 );
 
 // Spacing Scale
 $spacing-scale: (
-  "xs": 0.5rem,
-  "sm": 1rem,
-  "md": 1.5rem,
-  "lg": 2rem,
-  "xl": 3rem,
-  "2xl": 5rem,
-  "3xl": 8rem,
+  "2": 0.25rem,
+  "4": 0.5rem,
+  "6": 0.75rem,
+  "8": 1rem,
+  "10": 1.25rem,
+  "12": 1.5rem,
+  "14": 1.75rem,
+  "16": 2rem,
+  "18": 2.25,
+  "20": 2.5rem,
+  "22": 2.75rem,
+  "24": 3rem,
+  "28": 3.5rem,
+  "32": 4rem,
+  "36": 4.5rem,
+  "40": 5rem,
+  "44": 5.5rem,
+  "48": 6rem,
+  "52": 6.5rem,
+  "56": 7rem,
+  "60": 7.5rem,
+  "64": 8rem,
 );
 
-// ------------------------------------------------------
-// 3. SEMANTIC ALIASES (SCSS)
-// ------------------------------------------------------
-// Replaced map-get with map.get to fix warnings
-
-// Body
-$fs-body-extra-small: map.get($type-scale, "xs");
-$fs-body-small: map.get($type-scale, "sm");
-$fs-body-default: map.get($type-scale, "base");
-$fs-body-large: map.get($type-scale, "lg");
-
-// Headings
-$fs-heading-h5: map.get($type-scale, "lg");
-$fs-heading-h4: map.get($type-scale, "xl");
-$fs-heading-h3: map.get($type-scale, "2xl");
-$fs-heading-h2: map.get($type-scale, "3xl");
-$fs-heading-h1: map.get($type-scale, "5xl");
 $fs-heading-hero: clamp(1.8rem, 13cqi, 3.5rem);
-
-// Buttons
-$fs-button-extra-small: map.get($type-scale, "3xs");
-$fs-button-small: map.get($type-scale, "xs");
-$fs-button-default: map.get($type-scale, "sm");
-$fs-button-large: map.get($type-scale, "base");
-$fs-button-extra-large: map.get($type-scale, "lg");
-
-// Eyebrows
-$fs-eyebrow-extra-small: map.get($type-scale, "3xs");
-$fs-eyebrow-small: map.get($type-scale, "xs");
-$fs-eyebrow-default: map.get($type-scale, "sm");
-$fs-eyebrow-large: map.get($type-scale, "base");
-$fs-eyebrow-extra-large: map.get($type-scale, "lg");
 
 // ------------------------------------------------------
 // 4. FONT FAMILIES

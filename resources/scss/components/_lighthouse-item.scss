@@ -8,7 +8,7 @@
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 100%;
-    background-color: #86ff76;
+    background-color: var(--color-green);
   }
   &__text {
     @include type-mono(var(--fs-body-extra-small), 1, 500, 0);

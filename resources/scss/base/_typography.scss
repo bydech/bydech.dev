@@ -46,7 +46,7 @@
 }
 
 %body-small {
-  @include type-sans(var(--fs-body-small), 1.5, 400, 0.0075em);
+  @include type-sans(var(--fs-body-small), 1.5, 400, 0.01em);
 }
 
 %body-extra-small {
@@ -122,6 +122,8 @@ dl,
 figure,
 blockquote {
   margin: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 h1 {
@@ -182,23 +184,6 @@ small {
   --flow-space: 3em;
 }
 
-.mb-1 {
-  margin-bottom: 0.5rem;
-}
-.mb-2 {
-  margin-bottom: 1rem;
-}
-.mb-4 {
-  margin-bottom: 2rem;
-}
-.mb-8 {
-  margin-bottom: 4rem;
-}
-
-.m-0 {
-  margin: 0;
-}
-
 .text-primary {
   color: var(--text-primary);
 }
@@ -210,4 +195,13 @@ small {
 }
 .text-secondary-inverse {
   color: var(--text-secondary-inverse);
+  p,
+  li,
+  span {
+    color: inherit;
+  }
+}
+
+.text-mono {
+  font-family: "jetbrains";
 }

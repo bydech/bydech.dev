@@ -1,7 +1,9 @@
 .icon {
+  --icon-width: 1.5rem;
+  --icon-height: 1.5rem;
   display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: var(--icon-width) !important;
+  height: var(--icon-height) !important;
   fill: currentColor;
   vertical-align: middle;
 
@@ -9,28 +11,28 @@
     fill 0.2s ease,
     transform 0.2s ease;
   &--xs {
-    width: var(--icon-size-xs);
-    height: var(--icon-size-xs);
+    --icon-width: var(--icon-size-xs);
+    --icon-height: var(--icon-size-xs);
   }
   &--sm {
-    width: var(--icon-size-sm);
-    height: var(--icon-size-sm);
+    --icon-width: var(--icon-size-sm);
+    --icon-height: var(--icon-size-sm);
   }
   &--md {
-    width: var(--icon-size-md);
-    height: var(--icon-size-md);
+    --icon-width: var(--icon-size-md);
+    --icon-height: var(--icon-size-md);
   }
   &--lg {
-    width: var(--icon-size-lg);
-    height: var(--icon-size-lg);
+    --icon-width: var(--icon-size-lg);
+    --icon-height: var(--icon-size-lg);
   }
   &--xl {
-    width: var(--icon-size-xl);
-    height: var(--icon-size-xl);
+    --icon-width: var(--icon-size-xl);
+    --icon-height: var(--icon-size-xl);
   }
   &--xxl {
-    width: var(--icon-size-xxl);
-    height: var(--icon-size-xxl);
+    --icon-width: var(--icon-size-xxl);
+    --icon-height: var(--icon-size-xxl);
   }
 
   &--primary {

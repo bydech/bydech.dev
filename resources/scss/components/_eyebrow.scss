@@ -3,8 +3,8 @@
 .eyebrow {
   --eyebrow-bg-opacity: 20%;
   --eyebrow-border-opacity: 40%;
-  --eyebrow-color: var(--color-primary);
-  --eyebrow-py: 0.6em;
+  // --eyebrow-color: var(--color-primary);
+  --eyebrow-py: 0.5em;
   --eyebrow-px: 0.8em;
   --eyebrow-font-size: var(--fs-eyebrow-default);
   --eyebrow-icon-size: 1.125em;
@@ -32,8 +32,16 @@
     font-size: var(--eyebrow-font-size);
   }
 
-  &--primary {
+  &--purple {
     --eyebrow-color: var(--color-primary);
+  }
+
+  &--green {
+    --eyebrow-color: var(--color-green);
+  }
+
+  &--blue {
+    --eyebrow-color: var(--color-blue);
   }
 
   &--dark {

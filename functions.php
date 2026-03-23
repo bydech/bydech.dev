@@ -57,3 +57,26 @@ add_filter("bricks/header/attributes", function ($attributes) {
 
     return $attributes;
 });
+
+/**
+ * Retrieves the 'snippet-category' terms for the current post.
+ * Returns an array of WP_Term objects for Bricks to loop over.
+ */
+function get_current_snippet_categories()
+{
+    // 1. Get the ID of the snippet we are currently looking at
+    $post_id = get_the_ID();
+
+    // 2. Ask WordPress for all 'snippet-category' terms attached to this post
+    $terms = get_the_terms($post_id, "snippet-category");
+
+    // 3. Safety check: If there are no terms or an error, return an empty array so the loop doesn't crash
+    if (!is_array($terms) || is_wp_error($terms)) {
+        return [];
+    }
+
+    // (Optional) You could run a custom PHP sort or filter on the $terms array right here!
+
+    // 4. Return the array of terms back to Bricks
+    return $terms;
+}

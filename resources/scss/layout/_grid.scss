@@ -8,30 +8,59 @@
       grid-template-columns: 3fr 2fr;
     }
   }
+  &--sidebar-reverse {
+    @include mq-laptop {
+      grid-template-columns: 2fr 3fr;
+    }
+  }
   &--halves {
     @include mq-laptop {
       grid-template-columns: repeat(2, 1fr);
+
+      .block--border {
+        // Targets all elements EXCEPT the last 2
+        &:nth-last-child(n + 3) {
+          border-bottom: 1px solid var(--border-line) !important;
+        }
+      }
     }
   }
   &--thirds {
     @include mq-tablet {
-      // Create 2 columns
       grid-template-columns: 1fr 1fr;
 
-      // Target the 3rd item specifically to make it full width
       > *:nth-child(3) {
-        grid-column: 1 / -1; // Spans from the first line to the last line
+        grid-column: 1 / -1;
       }
     }
 
-    // --- LAPTOP LAYOUT (Reset to 3 columns) ---
     @include mq-laptop {
       grid-template-columns: repeat(3, 1fr);
 
-      // CRITICAL: You must reset the span, otherwise it stays full width!
       > *:nth-child(3) {
         grid-column: auto;
       }
+    }
+  }
+  &--quarters {
+    @include mq-tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mq-laptop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &--pricing {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    gap: var(--space-8);
+
+    @include mq-laptop {
+      grid-template-columns: 0.7fr 3fr;
+      gap: 0;
     }
   }
 }
